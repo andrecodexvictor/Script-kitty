@@ -2,6 +2,18 @@ import './style.css';
 import { MotionCatMascot3D } from './mascot3d';
 
 let currentLang = 'en';
+let showKeyModal = false;
+
+let aiConfig = {
+  activeProvider: 'openai',
+  openaiApiKey: '',
+  googleApiKey: '',
+  nvidiaApiKey: '',
+  openrouterApiKey: '',
+  anthropicApiKey: '',
+  grokApiKey: '',
+  codexSubscriptionToken: ''
+};
 
 const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
   en: {
@@ -12,6 +24,7 @@ const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     btnScout: "🔍 Run Full Scout",
     btnMemory: "🧠 View Memory",
     btnPr: "🚀 Submit PR",
+    btnKeys: "🔑 AI Keys & Codex Login",
     learningTitle: "🚀 Script Kitty Self-Learning Suggestion Detected",
     learningDesc: "Pattern 'Exposed Config / Insecure Headers' encountered 3 times. Click to generate a Pull Request to add a permanent scanner rule!",
     btnPrSuggest: "Create PR Suggestion"
@@ -24,6 +37,7 @@ const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     btnScout: "🔍 Rodar Varredura Completa",
     btnMemory: "🧠 Ver Memória",
     btnPr: "🚀 Enviar PR",
+    btnKeys: "🔑 Chaves de IA & Login Codex",
     learningTitle: "🚀 Sugestão de Auto-Aprendizado do Script Kitty Detectada",
     learningDesc: "Padrão 'Exposed Config / Insecure Headers' encontrado 3 vezes. Clique para gerar um Pull Request e adicionar uma regra permanente!",
     btnPrSuggest: "Criar Sugestão de PR"
@@ -36,6 +50,7 @@ const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     btnScout: "🔍 Ejecutar Escaneo",
     btnMemory: "🧠 Ver Memoria",
     btnPr: "🚀 Enviar PR",
+    btnKeys: "🔑 Claves IA y Login Codex",
     learningTitle: "🚀 Sugerencia de Autoaprendizaje Detectada",
     learningDesc: "Patrón 'Exposed Config / Insecure Headers' encontrado 3 veces. ¡Haz clic para generar un Pull Request!",
     btnPrSuggest: "Crear Sugerencia de PR"
@@ -57,6 +72,10 @@ function renderApp() {
       </div>
 
       <div class="header-right">
+        <button class="btn btn-secondary" id="btn-open-keys" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;">
+          ${t.btnKeys}
+        </button>
+
         <!-- Language Selector -->
         <div class="lang-selector">
           <span>🌐 Language:</span>
@@ -102,12 +121,12 @@ function renderApp() {
 
         <div class="card">
           <div class="card-title">
-            <span>🧠</span> Agent Continuous Memory
+            <span>🤖</span> Active AI Provider
           </div>
           <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
-            <strong>Recorded Experiences:</strong> 14 Scans<br />
-            <strong>Pattern Memory:</strong> Active<br />
-            <strong>PR Generator:</strong> Auto-suggests contributions for recurring findings.
+            <strong>Provider:</strong> ${aiConfig.activeProvider.toUpperCase()}<br />
+            <strong>Codex Subscription:</strong> ${aiConfig.codexSubscriptionToken ? 'CONNECTED ✅' : 'NOT LINKED'}<br />
+            <strong>Multi-Model Keys:</strong> Supported
           </p>
         </div>
       </aside>
@@ -144,15 +163,105 @@ function renderApp() {
         </section>
       </main>
     </div>
+
+    <!-- AI Keys & Codex Login Modal -->
+    ${showKeyModal ? `
+      <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-box">
+          <div class="modal-header">
+            <h3>🔑 AI Provider Keys & ChatGPT Codex Login</h3>
+            <button class="btn-close" id="btn-close-keys">✖</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Select Active AI Provider Engine:</label>
+              <select id="key-provider" class="form-control">
+                <option value="openai" ${aiConfig.activeProvider === 'openai' ? 'selected' : ''}>OpenAI (GPT-4o / Codex)</option>
+                <option value="google" ${aiConfig.activeProvider === 'google' ? 'selected' : ''}>Google Gemini (2.5 Flash/Pro)</option>
+                <option value="nvidia" ${aiConfig.activeProvider === 'nvidia' ? 'selected' : ''}>NVIDIA NIM Security AI</option>
+                <option value="openrouter" ${aiConfig.activeProvider === 'openrouter' ? 'selected' : ''}>OpenRouter (Multi-Model)</option>
+                <option value="claude" ${aiConfig.activeProvider === 'claude' ? 'selected' : ''}>Anthropic Claude Code</option>
+                <option value="grok" ${aiConfig.activeProvider === 'grok' ? 'selected' : ''}>xAI Grok Build</option>
+                <option value="codex" ${aiConfig.activeProvider === 'codex' ? 'selected' : ''}>ChatGPT Codex Subscription Token</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>OpenAI API Key (sk-...):</label>
+              <input type="password" id="input-openai" class="form-control" placeholder="sk-..." value="${aiConfig.openaiApiKey}" />
+            </div>
+
+            <div class="form-group">
+              <label>Google Gemini API Key:</label>
+              <input type="password" id="input-google" class="form-control" placeholder="AIzaSy..." value="${aiConfig.googleApiKey}" />
+            </div>
+
+            <div class="form-group">
+              <label>NVIDIA NIM API Key:</label>
+              <input type="password" id="input-nvidia" class="form-control" placeholder="nvapi-..." value="${aiConfig.nvidiaApiKey}" />
+            </div>
+
+            <div class="form-group">
+              <label>OpenRouter API Key:</label>
+              <input type="password" id="input-openrouter" class="form-control" placeholder="sk-or-v1-..." value="${aiConfig.openrouterApiKey}" />
+            </div>
+
+            <div class="form-group">
+              <label>Anthropic Claude API Key:</label>
+              <input type="password" id="input-claude" class="form-control" placeholder="sk-ant-..." value="${aiConfig.anthropicApiKey}" />
+            </div>
+
+            <div class="form-group">
+              <label>xAI Grok API Key:</label>
+              <input type="password" id="input-grok" class="form-control" placeholder="xai-..." value="${aiConfig.grokApiKey}" />
+            </div>
+
+            <div class="form-group" style="background: rgba(0, 255, 157, 0.05); padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-accent);">
+              <label style="color: var(--accent-green);">ChatGPT Codex Subscription Token / Login:</label>
+              <input type="password" id="input-codex" class="form-control" placeholder="Paste your ChatGPT Codex Subscription Token..." value="${aiConfig.codexSubscriptionToken}" />
+              <small style="color: var(--text-muted); display: block; margin-top: 0.3rem;">Allows using your ChatGPT Plus / Codex subscription tokens inside Script Kitty.</small>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" id="btn-save-keys">Save AI Configuration</button>
+          </div>
+        </div>
+      </div>
+    ` : ''}
   `;
 
   // Initialize 3D Motion Cat Mascot
   new MotionCatMascot3D('mascot-3d-container');
 
-  // Bind Language Change Listener
+  // Bind Listeners
   document.querySelector('#select-lang')?.addEventListener('change', (e) => {
     currentLang = (e.target as HTMLSelectElement).value;
     renderApp();
+  });
+
+  document.querySelector('#btn-open-keys')?.addEventListener('click', () => {
+    showKeyModal = true;
+    renderApp();
+  });
+
+  document.querySelector('#btn-close-keys')?.addEventListener('click', () => {
+    showKeyModal = false;
+    renderApp();
+  });
+
+  document.querySelector('#btn-save-keys')?.addEventListener('click', () => {
+    aiConfig.activeProvider = (document.querySelector('#key-provider') as HTMLSelectElement).value;
+    aiConfig.openaiApiKey = (document.querySelector('#input-openai') as HTMLInputElement).value;
+    aiConfig.googleApiKey = (document.querySelector('#input-google') as HTMLInputElement).value;
+    aiConfig.nvidiaApiKey = (document.querySelector('#input-nvidia') as HTMLInputElement).value;
+    aiConfig.openrouterApiKey = (document.querySelector('#input-openrouter') as HTMLInputElement).value;
+    aiConfig.anthropicApiKey = (document.querySelector('#input-claude') as HTMLInputElement).value;
+    aiConfig.grokApiKey = (document.querySelector('#input-grok') as HTMLInputElement).value;
+    aiConfig.codexSubscriptionToken = (document.querySelector('#input-codex') as HTMLInputElement).value;
+
+    showKeyModal = false;
+    renderApp();
+    alert('✅ AI Credentials & ChatGPT Codex Subscription Token configured successfully!');
   });
 }
 

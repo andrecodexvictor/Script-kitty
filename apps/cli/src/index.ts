@@ -1,6 +1,9 @@
+#!/usr/bin/env node
+
 import { Command } from "commander";
 import { printBanner, ANSI_GREEN, ANSI_PURPLE, ANSI_CYAN, ANSI_YELLOW, ANSI_RESET, ANSI_BOLD } from "./banner";
 import { getTranslation } from "./i18n";
+import { loadCredentials, saveCredentials } from "./credentials";
 
 const program = new Command();
 
@@ -18,9 +21,11 @@ program
   .action((path: string, options: { lang?: string }) => {
     const lang = options.lang || program.opts().lang || "en";
     const t = getTranslation(lang);
+    const creds = loadCredentials();
 
     printBanner();
 
+    console.log(`${ANSI_BOLD}${ANSI_CYAN}[🔑 AI Engine Status]: Active Provider -> ${creds.activeProvider.toUpperCase()}${ANSI_RESET}`);
     console.log(`${ANSI_BOLD}${ANSI_GREEN}${t.auditStart} '${path}'...${ANSI_RESET}\n`);
     console.log(t.stepSast);
     console.log(t.stepSecrets);
@@ -39,6 +44,56 @@ program
     console.log(`${ANSI_BOLD}${ANSI_PURPLE}======================================================================${ANSI_RESET}\n`);
 
     console.log(`${ANSI_BOLD}${ANSI_GREEN}${t.auditComplete}${ANSI_RESET}\n`);
+  });
+
+program
+  .command("auth")
+  .description("Configure AI Provider API Keys (OpenAI, Google, NVIDIA, OpenRouter, Claude, Grok, Codex Token)")
+  .option("--set-openai <key>", "Set OpenAI API Key")
+  .option("--set-google <key>", "Set Google Gemini API Key")
+  .option("--set-nvidia <key>", "Set NVIDIA NIM API Key")
+  .option("--set-openrouter <key>", "Set OpenRouter API Key")
+  .option("--set-claude <key>", "Set Anthropic Claude API Key")
+  .option("--set-grok <key>", "Set xAI Grok API Key")
+  .option("--set-codex-token <token>", "Set ChatGPT / Codex Subscription Access Token")
+  .option("--provider <name>", "Select active AI Provider (openai, google, nvidia, openrouter, claude, grok, codex)")
+  .action((options: {
+    setOpenai?: string;
+    setGoogle?: string;
+    setNvidia?: string;
+    setOpenrouter?: string;
+    setClaude?: string;
+    setGrok?: string;
+    setCodexToken?: string;
+    provider?: any;
+  }) => {
+    printBanner();
+
+    const updates: any = {};
+    if (options.setOpenai) updates.openaiApiKey = options.setOpenai;
+    if (options.setGoogle) updates.googleApiKey = options.setGoogle;
+    if (options.setNvidia) updates.nvidiaApiKey = options.setNvidia;
+    if (options.setOpenrouter) updates.openrouterApiKey = options.setOpenrouter;
+    if (options.setClaude) updates.anthropicApiKey = options.setClaude;
+    if (options.setGrok) updates.grokApiKey = options.setGrok;
+    if (options.setCodexToken) updates.codexSubscriptionToken = options.setCodexToken;
+    if (options.provider) updates.activeProvider = options.provider;
+
+    const saved = saveCredentials(updates);
+
+    console.log(`${ANSI_BOLD}${ANSI_GREEN}✅ AI Credentials & Provider configuration saved!${ANSI_RESET}\n`);
+    console.log(JSON.stringify({
+      active_provider: saved.activeProvider,
+      configured_keys: {
+        openai: !!saved.openaiApiKey,
+        google_gemini: !!saved.googleApiKey,
+        nvidia_nim: !!saved.nvidiaApiKey,
+        openrouter: !!saved.openrouterApiKey,
+        claude: !!saved.anthropicApiKey,
+        grok: !!saved.grokApiKey,
+        codex_subscription: !!saved.codexSubscriptionToken
+      }
+    }, null, 2));
   });
 
 program
