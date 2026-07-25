@@ -1,16 +1,17 @@
 :root {
-  --bg-primary: #0a0d14;
-  --bg-surface: #121824;
-  --bg-panel: #1a2234;
-  --bg-hover: #242f46;
+  --bg-primary: #07090e;
+  --bg-surface: rgba(18, 24, 38, 0.75);
+  --bg-panel: rgba(26, 34, 52, 0.85);
+  --bg-hover: rgba(36, 47, 70, 0.9);
   
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-accent: rgba(0, 255, 157, 0.3);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(0, 255, 157, 0.35);
+  --border-purple: rgba(181, 95, 230, 0.35);
   
   --accent-green: #00ff9d;
-  --accent-green-glow: rgba(0, 255, 157, 0.2);
+  --accent-green-glow: rgba(0, 255, 157, 0.25);
   --accent-purple: #b55fe6;
-  --accent-purple-glow: rgba(181, 95, 230, 0.2);
+  --accent-purple-glow: rgba(181, 95, 230, 0.25);
   --accent-blue: #3b82f6;
   --accent-amber: #f59e0b;
   --accent-red: #ef4444;
@@ -31,16 +32,20 @@
 
 body {
   background-color: var(--bg-primary);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 255, 157, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(181, 95, 230, 0.08) 0px, transparent 50%);
   color: var(--text-main);
   font-family: var(--font-sans);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* App Header */
+/* Glassmorphism Header */
 .header {
-  background: rgba(18, 24, 36, 0.85);
-  backdrop-filter: blur(12px);
+  background: rgba(11, 15, 25, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color);
   padding: 1rem 2rem;
   display: flex;
@@ -62,7 +67,7 @@ body {
   height: 48px;
   border-radius: 12px;
   border: 2px solid var(--accent-green);
-  box-shadow: 0 0 15px var(--accent-green-glow);
+  box-shadow: 0 0 20px var(--accent-green-glow);
   object-fit: cover;
 }
 
@@ -90,11 +95,12 @@ body {
   background: rgba(0, 255, 157, 0.1);
   border: 1px solid var(--accent-green);
   color: var(--accent-green);
-  padding: 0.4rem 0.9rem;
+  padding: 0.45rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
   font-family: var(--font-mono);
+  box-shadow: 0 0 15px var(--accent-green-glow);
 }
 
 .status-dot {
@@ -112,7 +118,7 @@ body {
   100% { opacity: 1; transform: scale(1); }
 }
 
-/* Layout */
+/* Layout Grid */
 .container {
   max-width: 1440px;
   margin: 0 auto;
@@ -122,20 +128,26 @@ body {
   gap: 2rem;
 }
 
-/* Sidebar Context Files Navigator */
 .sidebar {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
+/* Impeccable Card Styling */
 .card {
   background: var(--bg-surface);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 1.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: all 0.2s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--border-purple);
+  box-shadow: 0 15px 35px rgba(181, 95, 230, 0.15);
 }
 
 .card-title {
@@ -154,14 +166,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6rem 0.8rem;
-  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
   background: var(--bg-panel);
   margin-bottom: 0.5rem;
   font-family: var(--font-mono);
   font-size: 0.85rem;
   border: 1px solid transparent;
-  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .context-file-item:hover {
@@ -189,39 +201,38 @@ body {
   gap: 2rem;
 }
 
-/* Mascot Welcome Banner */
+/* Interactive 3D Mascot Hero Banner */
 .hero-banner {
-  background: linear-gradient(135deg, rgba(26, 34, 52, 0.9) 0%, rgba(181, 95, 230, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(26, 34, 52, 0.95) 0%, rgba(181, 95, 230, 0.2) 100%);
   border: 1px solid var(--border-accent);
-  border-radius: 20px;
+  border-radius: 24px;
   padding: 2rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 2rem;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-.hero-banner::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, var(--accent-green-glow) 0%, transparent 70%);
-  pointer-events: none;
+.mascot-3d-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.mascot-img {
-  width: 180px;
-  border-radius: 12px;
-  border: 2px solid var(--accent-green);
-  box-shadow: 0 0 25px var(--accent-green-glow);
+.mascot-3d-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .hero-text h1 {
-  font-size: 1.75rem;
+  font-size: 1.85rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
 }
@@ -229,7 +240,7 @@ body {
 .hero-text p {
   color: var(--text-muted);
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 1.25rem;
 }
 
@@ -240,13 +251,13 @@ body {
 
 .btn {
   padding: 0.75rem 1.5rem;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 0.9rem;
   font-weight: 700;
   font-family: var(--font-mono);
   cursor: pointer;
   border: none;
-  transition: all 0.2s ease;
+  transition: all 0.25 ease;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -255,12 +266,12 @@ body {
 .btn-primary {
   background: var(--accent-green);
   color: #000;
-  box-shadow: 0 0 15px var(--accent-green-glow);
+  box-shadow: 0 0 20px var(--accent-green-glow);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 25px var(--accent-green-glow);
+  box-shadow: 0 0 30px var(--accent-green-glow);
 }
 
 .btn-secondary {
@@ -274,7 +285,30 @@ body {
   border-color: var(--accent-purple);
 }
 
-/* PREVC Workflow Matrix */
+/* Continuous Learning Banner */
+.learning-banner {
+  background: linear-gradient(135deg, rgba(181, 95, 230, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+  border: 1px solid var(--accent-purple);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.learning-info h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-purple);
+  margin-bottom: 0.25rem;
+}
+
+.learning-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* PREVC Pipeline Matrix */
 .prevc-pipeline {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -284,21 +318,21 @@ body {
 .prevc-step {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 1rem;
   text-align: center;
-  position: relative;
+  transition: all 0.2s ease;
 }
 
 .prevc-step.active {
   border-color: var(--accent-green);
   background: var(--bg-panel);
-  box-shadow: 0 0 15px var(--accent-green-glow);
+  box-shadow: 0 0 20px var(--accent-green-glow);
 }
 
 .prevc-letter {
   font-family: var(--font-mono);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
   color: var(--accent-green);
   margin-bottom: 0.25rem;
@@ -311,7 +345,7 @@ body {
   font-weight: 600;
 }
 
-/* Findings & Approval Queue Table */
+/* Data Table */
 .data-table {
   width: 100%;
   border-collapse: collapse;
@@ -319,7 +353,7 @@ body {
 }
 
 .data-table th, .data-table td {
-  padding: 0.9rem 1rem;
+  padding: 1rem;
   text-align: left;
   border-bottom: 1px solid var(--border-color);
   font-size: 0.9rem;
@@ -334,7 +368,7 @@ body {
 }
 
 .badge-risk {
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.65rem;
   border-radius: 6px;
   font-size: 0.75rem;
   font-weight: 700;
@@ -345,11 +379,11 @@ body {
 .badge-medium { background: rgba(245, 158, 11, 0.2); color: var(--accent-amber); border: 1px solid var(--accent-amber); }
 .badge-low { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); border: 1px solid var(--accent-blue); }
 
-/* Audit Log Inspector */
+/* Audit Terminal */
 .audit-terminal {
-  background: #06080d;
+  background: #04060a;
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 1.25rem;
   font-family: var(--font-mono);
   font-size: 0.85rem;
@@ -365,10 +399,5 @@ body {
   gap: 1rem;
 }
 
-.audit-hash {
-  color: var(--accent-purple);
-}
-
-.audit-action {
-  color: var(--text-main);
-}
+.audit-hash { color: var(--accent-purple); }
+.audit-action { color: var(--text-main); }

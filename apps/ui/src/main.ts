@@ -1,4 +1,5 @@
 import './style.css';
+import { MotionCatMascot3D } from './mascot3d';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <!-- Header -->
@@ -7,12 +8,12 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <img src="/mascot.png" alt="Script Kitty Avatar" class="brand-avatar" />
       <div>
         <div class="brand-title">Script Kitty</div>
-        <div class="brand-tagline">Your Patch Cat — Full Defensive Security Suite</div>
+        <div class="brand-tagline">Your Patch Cat — Self-Learning Security Suite</div>
       </div>
     </div>
     <div class="status-badge">
       <span class="status-dot"></span>
-      FULL TOOLSET LOADED (.dotcontext)
+      CONTINUOUS MEMORY ACTIVE (.context/runtime/memory.json)
     </div>
   </header>
 
@@ -40,6 +41,21 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
           <span class="context-file-name">scope.md</span>
           <span class="context-file-status">AUTHORIZED</span>
         </div>
+        <div class="context-file-item">
+          <span class="context-file-name">agent-spec.md</span>
+          <span class="context-file-status">ACTIVE</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>🧠</span> Agent Continuous Memory
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+          <strong>Recorded Experiences:</strong> 14 Scans<br />
+          <strong>Pattern Memory:</strong> Active<br />
+          <strong>PR Generator:</strong> Auto-suggests contributions for recurring findings.
+        </p>
       </div>
 
       <div class="card">
@@ -59,26 +75,43 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
     <!-- Main Content -->
     <main class="main-content">
-      <!-- Mascot Hero Banner -->
+      <!-- 3D Interactive Mascot Hero Banner -->
       <section class="hero-banner">
-        <img src="/mascot.png" alt="Script Kitty Mascot" class="mascot-img" />
         <div class="hero-text">
-          <h1>Script Kitty Security Suite</h1>
+          <h1>Script Kitty Cyber-Suite</h1>
           <p>
-            Equipped with a comprehensive set of defensive tools: Secret Leak Scanning, HTTP Header Hardening, AI Guardrail & Prompt-Injection Testing, and Automated Retest Runners.
+            Equipped with 3D Motion Telemetry and Agent Continuous Memory. When Script Kitty detects a recurring issue pattern, it automatically suggests contributing a Pull Request to improve the open-source rule repository!
           </p>
           <div class="hero-actions">
             <button class="btn btn-primary" id="btn-scout">
               <span>🔍</span> Run Full Scout
             </button>
-            <button class="btn btn-secondary" id="btn-secrets">
-              <span>🔑</span> Scan Secrets
+            <button class="btn btn-secondary" id="btn-learn">
+              <span>🧠</span> View Memory
             </button>
-            <button class="btn btn-secondary" id="btn-ai">
-              <span>🤖</span> Test AI Guardrails
+            <button class="btn btn-secondary" id="btn-pr">
+              <span>🚀</span> Submit PR
             </button>
           </div>
         </div>
+
+        <div class="mascot-3d-wrapper">
+          <div id="mascot-3d-container"></div>
+          <span class="mascot-3d-label">Interactive 3D Motion Cat</span>
+        </div>
+      </section>
+
+      <!-- Continuous Learning Contribution Suggestion Banner -->
+      <section class="learning-banner">
+        <div class="learning-info">
+          <h4>🚀 Script Kitty Self-Learning Suggestion Detected</h4>
+          <p>
+            Pattern <code>Exposed Config / Insecure Headers</code> has been encountered and resolved <strong>3 times</strong>. Click to generate a Pull Request to add a permanent scanner rule to script-kitty/packages/scanners!
+          </p>
+        </div>
+        <button class="btn btn-primary" id="btn-pr-suggest" style="font-size: 0.8rem; padding: 0.5rem 1rem;">
+          Create PR Suggestion
+        </button>
       </section>
 
       <!-- PREVC Workflow Pipeline -->
@@ -99,7 +132,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
             <div class="prevc-letter">E</div>
             <div class="prevc-label">Execute Dry-Run</div>
           </div>
-          <div class="prevc-step">
+          <div class="prevc-step active">
             <div class="prevc-letter">V</div>
             <div class="prevc-label">Verify Impact</div>
           </div>
@@ -175,9 +208,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
             <span class="audit-action">INITIALIZED (.dotstack, .dotarchitecture, .dotcontext)</span>
           </div>
           <div class="audit-entry">
-            <span>[ENTRY #1]</span>
-            <span class="audit-hash">hash: e3b0c44298fc1c149afbf4c8996fb...</span>
-            <span class="audit-action">SCAN_SECRETS (config/aws.js) -> Secret Detected & Logged</span>
+            <span>[MEMORY]</span>
+            <span class="audit-hash">hash: c4ca4238a0b923820dcc509a6f758...</span>
+            <span class="audit-action">RECORD_EXPERIENCE (Pattern SK-HDR-001 encountered 3x -> Suggesting PR)</span>
           </div>
           <div class="audit-entry">
             <span>[ENTRY #2]</span>
@@ -190,15 +223,23 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   </div>
 `;
 
-// Add Interactive Event Handlers
+// Initialize 3D Motion Cat Mascot
+new MotionCatMascot3D('mascot-3d-container');
+
+// Event Handlers
 document.querySelector('#btn-scout')?.addEventListener('click', () => {
-  alert('🐱 [Script Kitty] Full passive exposure discovery scan completed cleanly!');
+  alert('🐱 [Script Kitty] Scouting target http://localhost:3000... Continuous memory updated!');
 });
 
-document.querySelector('#btn-secrets')?.addEventListener('click', () => {
-  alert('🔑 [Secret Scanner] Codebase scanned! 1 potential secret detected in config/aws.js.');
+document.querySelector('#btn-learn')?.addEventListener('click', () => {
+  alert('🧠 [Agent Continuous Memory] 14 experiences stored in .context/runtime/memory.json.');
 });
 
-document.querySelector('#btn-ai')?.addEventListener('click', () => {
-  alert('🤖 [AI Guardrail Validator] LLM target tested! 3 prompt injection and jailbreak tests PASSED.');
+document.querySelector('#btn-pr')?.addEventListener('click', () => {
+  window.open('https://github.com/andrecodexvictor/Script-kitty/compare', '_blank');
+});
+
+document.querySelector('#btn-pr-suggest')?.addEventListener('click', () => {
+  alert('🚀 [PR Suggestion Generator]\nGenerated Pull Request for script-kitty/packages/scanners!\nOpening GitHub PR template...');
+  window.open('https://github.com/andrecodexvictor/Script-kitty/compare', '_blank');
 });
