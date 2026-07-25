@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "script-kitty-scanners"
+version = "0.1.0"
+description = "Exposure, secret, and code vulnerability discovery scanners for Script Kitty"
+authors = [{ name = "Script Kitty Team" }]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.31.0"
+]

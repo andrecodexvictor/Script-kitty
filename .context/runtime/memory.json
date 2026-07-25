@@ -1,0 +1,11 @@
+[
+  {
+    "id": "EXP-0001",
+    "timestamp": "2026-07-25T19:03:15.363158Z",
+    "category": "Insecure Cryptography / Hash",
+    "pattern_hash": "edbdaceb7c7ff9d261286c8a6df6186a",
+    "evidence_snippet": "",
+    "occurrence_count": 1,
+    "remediation_applied": "Upgrade to secure hashing algorithms such as SHA-256, SHA-512, or Argon2 / bcrypt for credentials."
+  }
+]

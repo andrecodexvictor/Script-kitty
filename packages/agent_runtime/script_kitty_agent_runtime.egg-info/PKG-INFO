@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: script-kitty-agent-runtime
+Version: 0.1.0
+Summary: PREVC Agent Execution Runtime and Subagent Manager for Script Kitty
+Author: Script Kitty Team
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: pydantic>=2.0
+Requires-Dist: requests>=2.31.0
+Requires-Dist: typing-extensions>=4.0

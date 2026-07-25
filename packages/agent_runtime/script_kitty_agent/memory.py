@@ -30,7 +30,7 @@ class AgentContinuousMemory:
         category = finding.get("category", "Unknown")
         evidence = finding.get("evidence", "")
         
-        pattern_hash = hashlib.md5(f"{category}:{evidence[:50]}".encode()).hexdigest()
+        pattern_hash = hashlib.sha256(f"{category}:{evidence[:50]}".encode()).hexdigest()
 
         # Search for past occurrences of this finding pattern
         existing_matches = [exp for exp in self.experiences if exp.get("pattern_hash") == pattern_hash]
