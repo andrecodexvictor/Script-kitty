@@ -4,6 +4,7 @@ import { Command } from "commander";
 import { printBanner, ANSI_GREEN, ANSI_PURPLE, ANSI_CYAN, ANSI_YELLOW, ANSI_RESET, ANSI_BOLD } from "./banner";
 import { getTranslation } from "./i18n";
 import { loadCredentials, saveCredentials } from "./credentials";
+import { runInteractiveMenu } from "./interactive";
 
 const program = new Command();
 
@@ -11,7 +12,11 @@ program
   .name("script-kitty")
   .description("🐱🛡️ Script Kitty — Your Patch Cat: Enterprise Security Engine & Remediation Platform")
   .version("1.0.0")
-  .option("-l, --lang <language>", "Language configuration (en, pt, es)", "en");
+  .option("-l, --lang <language>", "Language configuration (en, pt, es)", "en")
+  .action(async (options: { lang?: string }) => {
+    // If no subcommand is specified, open the Interactive Navigable TUI Shell!
+    await runInteractiveMenu(options.lang || "en");
+  });
 
 program
   .command("audit")
