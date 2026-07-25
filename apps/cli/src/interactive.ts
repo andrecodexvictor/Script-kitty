@@ -2,6 +2,7 @@ import * as readline from "readline";
 import { printBanner, ANSI_GREEN, ANSI_PURPLE, ANSI_CYAN, ANSI_YELLOW, ANSI_RESET, ANSI_BOLD } from "./banner";
 import { getTranslation } from "./i18n";
 import { loadCredentials, saveCredentials, AICredentials } from "./credentials";
+import { scanWorkspaceReal, evaluateHttpHeadersReal } from "./real_scanner";
 
 export interface FeatureOption {
   id: string;
@@ -9,7 +10,7 @@ export interface FeatureOption {
   enabled: boolean;
 }
 
-export async function promptTextInput(query: string, hideInput = false): Promise<string> {
+export async function promptTextInput(query: string): Promise<string> {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -83,20 +84,19 @@ export async function runInteractiveAIWizard(): Promise<void> {
   console.log(`Active Engine: ${ANSI_CYAN}${saved.activeProvider.toUpperCase()}${ANSI_RESET}\n`);
 }
 
-export async function runFeatureSelection(): Promise<void> {
+export async function runFeatureSelection(targetPath = "."): Promise<void> {
   const features: FeatureOption[] = [
     { id: "sast", name: "Code SAST Vulnerability Scanner (Injection, SQLi, MD5)", enabled: true },
     { id: "secrets", name: "Secret & Credential Leak Engine (AWS, SSH, API Tokens)", enabled: true },
     { id: "headers", name: "HTTP Security Header Evaluator (HSTS, CSP, CORS)", enabled: true },
-    { id: "guardrails", name: "AI Guardrail & Prompt-Injection Validator", enabled: true },
-    { id: "deps", name: "Dependency CVE Vulnerability Auditor", enabled: false },
-    { id: "compliance", name: "OWASP & NIS2 Regulatory Compliance Check", enabled: false }
+    { id: "guardrails", name: "AI Guardrail & Prompt-Injection Validator", enabled: true }
   ];
 
   let cursorIndex = 0;
 
   if (!process.stdin.isTTY) {
-    console.log(`All default features enabled.`);
+    const report = scanWorkspaceReal(targetPath);
+    console.log(`Scanned ${report.total_files_scanned} files. Found ${report.total_findings} findings.`);
     return;
   }
 
@@ -126,7 +126,7 @@ export async function runFeatureSelection(): Promise<void> {
   }
 
   return new Promise((resolve) => {
-    const handleKey = (_str: string, key: readline.Key) => {
+    const handleKey = async (_str: string, key: readline.Key) => {
       if (key.ctrl && key.name === "c") {
         process.exit(0);
       }
@@ -146,16 +146,23 @@ export async function runFeatureSelection(): Promise<void> {
           process.stdin.setRawMode(false);
         }
 
-        const selected = features.filter((f) => f.enabled);
-        console.log(`\n${ANSI_BOLD}${ANSI_GREEN}[*] Executing audit with ${selected.length} selected feature suites...${ANSI_RESET}\n`);
-        selected.forEach((f, i) => {
-          console.log(`   [${i + 1}/${selected.length}] Running ${f.name}... ${ANSI_GREEN}OK${ANSI_RESET}`);
-        });
+        console.log(`\n${ANSI_BOLD}${ANSI_GREEN}[*] Executing REAL Live Audit on '${targetPath}'...${ANSI_RESET}\n`);
+        const report = scanWorkspaceReal(targetPath);
 
-        console.log(`\n${ANSI_BOLD}${ANSI_PURPLE}======================================================================${ANSI_RESET}`);
-        console.log(`${ANSI_BOLD}${ANSI_CYAN}🐾 Detective Patch Cat:${ANSI_RESET}`);
-        console.log(`${ANSI_YELLOW}"Multi-feature audit complete! Selected security suites verified cleanly."${ANSI_RESET}`);
-        console.log(`${ANSI_BOLD}${ANSI_PURPLE}======================================================================${ANSI_RESET}\n`);
+        console.log(`📂 Total Files Analyzed: ${report.total_files_scanned}`);
+        console.log(`🚨 Total Findings Detected: ${report.total_findings}\n`);
+
+        if (report.total_findings > 0) {
+          report.findings.forEach((finding, idx) => {
+            console.log(`${ANSI_BOLD}${ANSI_YELLOW}[Finding ${idx + 1}/${report.total_findings}] ${finding.finding_id} (${finding.severity})${ANSI_RESET}`);
+            console.log(`   📍 File: ${finding.file_path}:${finding.line_number}`);
+            console.log(`   🔎 Snippet: ${finding.snippet}`);
+            console.log(`   💡 Remediation: ${finding.remediation}\n`);
+          });
+        } else {
+          console.log(`${ANSI_GREEN}✅ No real security vulnerabilities or secret leaks detected in workspace.${ANSI_RESET}\n`);
+        }
+
         resolve();
       }
     };
@@ -174,31 +181,34 @@ export async function runInteractiveMenu(lang: string = "en"): Promise<void> {
   const menuItems = [
     {
       id: "audit",
-      label: "🔍 [1] Run Full Enterprise Security Audit (SAST, Secrets, Headers, AI)",
+      label: "🔍 [1] Run Full Live Real Security Audit (Filesystem SAST, Secrets, Headers)",
       action: async () => {
         const t = getTranslation(lang);
         console.log(`\n${ANSI_BOLD}${ANSI_GREEN}${t.auditStart} '.'...${ANSI_RESET}\n`);
-        console.log(t.stepSast);
-        console.log(t.stepSecrets);
-        console.log(t.stepHeaders);
-        console.log(t.stepAi);
+        
+        const report = scanWorkspaceReal(".");
 
-        console.log(`\n${ANSI_BOLD}${ANSI_PURPLE}======================================================================${ANSI_RESET}`);
-        console.log(`${ANSI_BOLD}${ANSI_CYAN}🐾 Detective Patch Cat (${lang.toUpperCase()}):${ANSI_RESET}`);
-        console.log(`${ANSI_YELLOW}${t.detectiveGreeting}${ANSI_RESET}\n`);
-        console.log(`${ANSI_BOLD}${ANSI_GREEN}${t.allClean}${ANSI_RESET}`);
-        console.log(`${ANSI_CYAN}${t.patchRecommendationHeader}${ANSI_RESET}`);
-        console.log(t.patchHintEnv);
-        console.log(t.patchHintHeaders);
-        console.log(`${ANSI_BOLD}${ANSI_PURPLE}======================================================================${ANSI_RESET}\n`);
-        console.log(`${ANSI_BOLD}${ANSI_GREEN}${t.auditComplete}${ANSI_RESET}\n`);
+        console.log(`📂 Scanned Files: ${report.total_files_scanned}`);
+        console.log(`🔍 Live Findings Detected: ${report.total_findings}\n`);
+
+        if (report.total_findings > 0) {
+          report.findings.forEach((finding, idx) => {
+            console.log(`${ANSI_BOLD}${ANSI_YELLOW}[${idx + 1}] ${finding.finding_id} (${finding.severity}): ${finding.description}${ANSI_RESET}`);
+            console.log(`    File: ${finding.file_path}:${finding.line_number}`);
+            console.log(`    Fix: ${finding.remediation}`);
+          });
+        } else {
+          console.log(`${ANSI_BOLD}${ANSI_GREEN}${t.allClean}${ANSI_RESET}`);
+        }
+
+        console.log(`\n${ANSI_BOLD}${ANSI_GREEN}${t.auditComplete}${ANSI_RESET}\n`);
       }
     },
     {
       id: "custom-features",
-      label: "🎛️ [2] Select Custom Features & Audit Suites to Run (Checkbox TUI)",
+      label: "🎛️ [2] Custom Live Scanner Suite Selection (Checkbox TUI)",
       action: async () => {
-        await runFeatureSelection();
+        await runFeatureSelection(".");
       }
     },
     {
@@ -209,66 +219,27 @@ export async function runInteractiveMenu(lang: string = "en"): Promise<void> {
       }
     },
     {
-      id: "scout",
-      label: "📡 [4] Scout Target Exposure (http://localhost:3000)",
-      action: async () => {
-        console.log(`\n🐱 [Script Kitty] Scouting target: http://localhost:3000...`);
-        console.log(`🔒 Loading context (.dotstack, .dotarchitecture, .dotcontext)...`);
-        console.log(`✅ Target authorized under scope.md`);
-        console.log(JSON.stringify({
-          status: "SUCCESS",
-          target: "http://localhost:3000",
-          finding_id: "SK-2026-001",
-          suggested_patch: "app.use(helmet.hsts({ maxAge: 31536000 }));"
-        }, null, 2));
-      }
-    },
-    {
       id: "scan-secrets",
-      label: "🔑 [5] Scan Codebase for Leaked Secrets & Private Keys",
+      label: "🔑 [4] Scan Workspace for Real Secret Leaks & Private Keys",
       action: async () => {
-        console.log(`\n🔑 [Secret Scanner] Scanning workspace for credential leaks...`);
-        console.log(`${ANSI_GREEN}✅ 0 exposed secrets found. Repository is secure.${ANSI_RESET}`);
+        console.log(`\n🔑 [Real Secret Scanner] Scanning workspace for credential leaks...`);
+        const report = scanWorkspaceReal(".");
+        const secretFindings = report.findings.filter(f => f.category.includes("Secret"));
+        console.log(`Detected ${secretFindings.length} real secret leaks.`);
       }
     },
     {
       id: "scan-headers",
-      label: "🌐 [6] Evaluate HTTP Security Headers",
+      label: "🌐 [5] Evaluate Real Live HTTP Security Headers",
       action: async () => {
-        console.log(`\n🌐 [Header Scanner] Evaluating HTTP security headers...`);
-        console.log(`${ANSI_GREEN}✅ All recommended security headers (HSTS, CSP) verified.${ANSI_RESET}`);
-      }
-    },
-    {
-      id: "verify-guardrails",
-      label: "🤖 [7] Test AI Guardrails & Prompt Injection Resilience",
-      action: async () => {
-        console.log(`\n🤖 [AI Guardrail Validator] Testing AI targets...`);
-        console.log(`${ANSI_GREEN}✅ 3 prompt-injection & jailbreak test suites PASSED.${ANSI_RESET}`);
-      }
-    },
-    {
-      id: "patch",
-      label: "🐾 [8] Generate Patch Cat Remediation Playbook",
-      action: async () => {
-        console.log(`\n🐾 [Patch Cat] Generating remediation playbook for SK-2026-001...`);
-        console.log(`
-======================================================================
-   🐾 DETECTIVE PATCH CAT REMEDIATION PLAYBOOK: SK-2026-001
-======================================================================
-1. Add HSTS & Security Headers:
-   const helmet = require('helmet');
-   app.use(helmet());
-
-2. Enforce Credentials via Environment Variables:
-   const apiKey = process.env.API_KEY;
-======================================================================
-        `);
+        console.log(`\n🌐 [Real Header Scanner] Evaluating http://localhost:3000...`);
+        const findings = await evaluateHttpHeadersReal("http://localhost:3000");
+        console.log(`Evaluated endpoint headers: ${findings.length} missing security headers.`);
       }
     },
     {
       id: "exit",
-      label: "🚪 [9] Exit Script Kitty Interactive Shell",
+      label: "🚪 [6] Exit Script Kitty Interactive Shell",
       action: async () => {
         console.log(`\n👋 Exiting Script Kitty. Keep your repository secure!`);
         process.exit(0);
