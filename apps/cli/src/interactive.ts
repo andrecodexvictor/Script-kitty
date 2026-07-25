@@ -3,6 +3,7 @@ import { printBanner, ANSI_GREEN, ANSI_PURPLE, ANSI_CYAN, ANSI_YELLOW, ANSI_RESE
 import { getTranslation } from "./i18n";
 import { loadCredentials, saveCredentials, AICredentials } from "./credentials";
 import { scanWorkspaceReal, evaluateHttpHeadersReal } from "./real_scanner";
+import { runAgentChatSession } from "./chat";
 
 export interface FeatureOption {
   id: string;
@@ -84,91 +85,29 @@ export async function runInteractiveAIWizard(): Promise<void> {
   console.log(`Active Engine: ${ANSI_CYAN}${saved.activeProvider.toUpperCase()}${ANSI_RESET}\n`);
 }
 
-export async function runFeatureSelection(targetPath = "."): Promise<void> {
-  const features: FeatureOption[] = [
-    { id: "sast", name: "Code SAST Vulnerability Scanner (Injection, SQLi, MD5)", enabled: true },
-    { id: "secrets", name: "Secret & Credential Leak Engine (AWS, SSH, API Tokens)", enabled: true },
-    { id: "headers", name: "HTTP Security Header Evaluator (HSTS, CSP, CORS)", enabled: true },
-    { id: "guardrails", name: "AI Guardrail & Prompt-Injection Validator", enabled: true }
-  ];
+export async function runAuthorizedSecurityAnalysis(targetPath = "."): Promise<void> {
+  console.clear();
+  printBanner();
+  console.log(`${ANSI_BOLD}${ANSI_PURPLE}=== 🔍 AUTHORIZED CODEBASE SECURITY ANALYSIS ===${ANSI_RESET}`);
+  console.log(`${ANSI_YELLOW}Running combined AI and script analysis to identify real code defects and security risks...${ANSI_RESET}\n`);
 
-  let cursorIndex = 0;
+  const report = scanWorkspaceReal(targetPath);
 
-  if (!process.stdin.isTTY) {
-    const report = scanWorkspaceReal(targetPath);
-    console.log(`Scanned ${report.total_files_scanned} files. Found ${report.total_findings} findings.`);
-    return;
-  }
+  console.log(`📂 Analyzed ${report.total_files_scanned} files in target workspace.`);
+  console.log(`🚨 Discovered ${report.total_findings} potential security vulnerabilities.\n`);
 
-  function renderFeatureMenu() {
-    console.clear();
-    printBanner();
-    console.log(`${ANSI_BOLD}${ANSI_PURPLE}=== 🎛️ SELECT CUSTOM SECURITY AUDIT SUITES ===${ANSI_RESET}`);
-    console.log(`${ANSI_YELLOW}Use UP/DOWN arrows to navigate. SPACE to toggle. ENTER to execute.${ANSI_RESET}\n`);
-
-    features.forEach((feat, idx) => {
-      const checkbox = feat.enabled ? `${ANSI_GREEN}[X]${ANSI_RESET}` : `${ANSI_YELLOW}[ ]${ANSI_RESET}`;
-      if (idx === cursorIndex) {
-        console.log(`${ANSI_BOLD}${ANSI_CYAN} > ${checkbox} ${feat.name} <${ANSI_RESET}`);
-      } else {
-        console.log(`   ${checkbox} ${feat.name}`);
-      }
+  if (report.total_findings > 0) {
+    report.findings.forEach((finding, idx) => {
+      console.log(`${ANSI_BOLD}${ANSI_YELLOW}[${idx + 1}] ${finding.finding_id} (${finding.severity}): ${finding.category}${ANSI_RESET}`);
+      console.log(`    📍 Location: ${finding.file_path}:${finding.line_number}`);
+      console.log(`    🔎 Snippet: ${finding.snippet}`);
+      console.log(`    💡 Recommended Fix: ${finding.remediation}\n`);
     });
-
-    console.log(`\n${ANSI_BOLD}${ANSI_PURPLE}------------------------------------------------${ANSI_RESET}`);
+  } else {
+    console.log(`${ANSI_BOLD}${ANSI_GREEN}✅ Workspace verified clean. No security risks or secret leaks detected.${ANSI_RESET}\n`);
   }
 
-  renderFeatureMenu();
-
-  readline.emitKeypressEvents(process.stdin);
-  if (process.stdin.setRawMode) {
-    process.stdin.setRawMode(true);
-  }
-
-  return new Promise((resolve) => {
-    const handleKey = async (_str: string, key: readline.Key) => {
-      if (key.ctrl && key.name === "c") {
-        process.exit(0);
-      }
-
-      if (key.name === "up") {
-        cursorIndex = (cursorIndex - 1 + features.length) % features.length;
-        renderFeatureMenu();
-      } else if (key.name === "down") {
-        cursorIndex = (cursorIndex + 1) % features.length;
-        renderFeatureMenu();
-      } else if (key.name === "space") {
-        features[cursorIndex].enabled = !features[cursorIndex].enabled;
-        renderFeatureMenu();
-      } else if (key.name === "return") {
-        process.stdin.removeListener("keypress", handleKey);
-        if (process.stdin.setRawMode) {
-          process.stdin.setRawMode(false);
-        }
-
-        console.log(`\n${ANSI_BOLD}${ANSI_GREEN}[*] Executing REAL Live Audit on '${targetPath}'...${ANSI_RESET}\n`);
-        const report = scanWorkspaceReal(targetPath);
-
-        console.log(`📂 Total Files Analyzed: ${report.total_files_scanned}`);
-        console.log(`🚨 Total Findings Detected: ${report.total_findings}\n`);
-
-        if (report.total_findings > 0) {
-          report.findings.forEach((finding, idx) => {
-            console.log(`${ANSI_BOLD}${ANSI_YELLOW}[Finding ${idx + 1}/${report.total_findings}] ${finding.finding_id} (${finding.severity})${ANSI_RESET}`);
-            console.log(`   📍 File: ${finding.file_path}:${finding.line_number}`);
-            console.log(`   🔎 Snippet: ${finding.snippet}`);
-            console.log(`   💡 Remediation: ${finding.remediation}\n`);
-          });
-        } else {
-          console.log(`${ANSI_GREEN}✅ No real security vulnerabilities or secret leaks detected in workspace.${ANSI_RESET}\n`);
-        }
-
-        resolve();
-      }
-    };
-
-    process.stdin.on("keypress", handleKey);
-  });
+  await promptTextInput("Press ENTER to return to menu...");
 }
 
 export async function runInteractiveMenu(lang: string = "en"): Promise<void> {
@@ -176,70 +115,76 @@ export async function runInteractiveMenu(lang: string = "en"): Promise<void> {
 
   const creds = loadCredentials();
   console.log(`${ANSI_BOLD}${ANSI_CYAN} [Active AI Provider]: ${creds.activeProvider.toUpperCase()}${ANSI_RESET}`);
-  console.log(`${ANSI_BOLD}${ANSI_YELLOW} Use UP/DOWN arrow keys to navigate. Press ENTER to select.${ANSI_RESET}\n`);
+  console.log(`${ANSI_BOLD}${ANSI_YELLOW} Use UP/DOWN arrow keys to navigate. Press ENTER to select. Press [ESC] to go back.${ANSI_RESET}\n`);
 
   const menuItems = [
     {
+      id: "chat",
+      label: "💬 [1] Direct Agent Conversation (Chat with Detective Patch Cat)",
+      action: async () => {
+        await runAgentChatSession(lang);
+      }
+    },
+    {
+      id: "security-analysis",
+      label: "🔍 [2] Run Authorized Security Analysis (AI + Script Bug Discovery Engine)",
+      action: async () => {
+        await runAuthorizedSecurityAnalysis(".");
+      }
+    },
+    {
       id: "audit",
-      label: "🔍 [1] Run Full Live Real Security Audit (Filesystem SAST, Secrets, Headers)",
+      label: "🛡️ [3] Run Full Live Real Security Audit (Filesystem SAST, Secrets, Headers)",
       action: async () => {
         const t = getTranslation(lang);
         console.log(`\n${ANSI_BOLD}${ANSI_GREEN}${t.auditStart} '.'...${ANSI_RESET}\n`);
-        
         const report = scanWorkspaceReal(".");
-
         console.log(`📂 Scanned Files: ${report.total_files_scanned}`);
         console.log(`🔍 Live Findings Detected: ${report.total_findings}\n`);
-
         if (report.total_findings > 0) {
-          report.findings.forEach((finding, idx) => {
-            console.log(`${ANSI_BOLD}${ANSI_YELLOW}[${idx + 1}] ${finding.finding_id} (${finding.severity}): ${finding.description}${ANSI_RESET}`);
-            console.log(`    File: ${finding.file_path}:${finding.line_number}`);
-            console.log(`    Fix: ${finding.remediation}`);
+          report.findings.forEach((f, idx) => {
+            console.log(`${ANSI_BOLD}${ANSI_YELLOW}[${idx + 1}] ${f.finding_id} (${f.severity}): ${f.description}${ANSI_RESET}`);
+            console.log(`    File: ${f.file_path}:${f.line_number}`);
+            console.log(`    Fix: ${f.remediation}`);
           });
         } else {
           console.log(`${ANSI_BOLD}${ANSI_GREEN}${t.allClean}${ANSI_RESET}`);
         }
-
         console.log(`\n${ANSI_BOLD}${ANSI_GREEN}${t.auditComplete}${ANSI_RESET}\n`);
-      }
-    },
-    {
-      id: "custom-features",
-      label: "🎛️ [2] Custom Live Scanner Suite Selection (Checkbox TUI)",
-      action: async () => {
-        await runFeatureSelection(".");
+        await promptTextInput("Press ENTER to return to menu...");
       }
     },
     {
       id: "ai-wizard",
-      label: "🤖 [3] Interactive AI Agent Setup Wizard (OpenAI, Gemini, Claude, Grok, Codex)",
+      label: "🤖 [4] Interactive AI Agent Setup Wizard (OpenAI, Gemini, Claude, Grok, Codex)",
       action: async () => {
         await runInteractiveAIWizard();
       }
     },
     {
       id: "scan-secrets",
-      label: "🔑 [4] Scan Workspace for Real Secret Leaks & Private Keys",
+      label: "🔑 [5] Scan Workspace for Real Secret Leaks & Private Keys",
       action: async () => {
         console.log(`\n🔑 [Real Secret Scanner] Scanning workspace for credential leaks...`);
         const report = scanWorkspaceReal(".");
-        const secretFindings = report.findings.filter(f => f.category.includes("Secret"));
+        const secretFindings = report.findings.filter((f) => f.category.includes("Secret"));
         console.log(`Detected ${secretFindings.length} real secret leaks.`);
+        await promptTextInput("Press ENTER to return to menu...");
       }
     },
     {
       id: "scan-headers",
-      label: "🌐 [5] Evaluate Real Live HTTP Security Headers",
+      label: "🌐 [6] Evaluate Real Live HTTP Security Headers",
       action: async () => {
         console.log(`\n🌐 [Real Header Scanner] Evaluating http://localhost:3000...`);
         const findings = await evaluateHttpHeadersReal("http://localhost:3000");
         console.log(`Evaluated endpoint headers: ${findings.length} missing security headers.`);
+        await promptTextInput("Press ENTER to return to menu...");
       }
     },
     {
       id: "exit",
-      label: "🚪 [6] Exit Script Kitty Interactive Shell",
+      label: "🚪 [7] Exit Script Kitty Interactive Shell",
       action: async () => {
         console.log(`\n👋 Exiting Script Kitty. Keep your repository secure!`);
         process.exit(0);
@@ -253,7 +198,7 @@ export async function runInteractiveMenu(lang: string = "en"): Promise<void> {
     readline.cursorTo(process.stdout, 0, 18);
     readline.clearScreenDown(process.stdout);
 
-    console.log(`${ANSI_BOLD}${ANSI_PURPLE}--- INTERACTIVE MENU NAVIGATION ---${ANSI_RESET}`);
+    console.log(`${ANSI_BOLD}${ANSI_PURPLE}--- INTERACTIVE MENU NAVIGATION (Press ESC to go back) ---${ANSI_RESET}`);
     menuItems.forEach((item, index) => {
       if (index === selectedIndex) {
         console.log(`${ANSI_BOLD}${ANSI_GREEN} > ${item.label} <${ANSI_RESET}`);
@@ -261,7 +206,7 @@ export async function runInteractiveMenu(lang: string = "en"): Promise<void> {
         console.log(`   ${item.label}`);
       }
     });
-    console.log(`${ANSI_BOLD}${ANSI_PURPLE}-----------------------------------${ANSI_RESET}`);
+    console.log(`${ANSI_BOLD}${ANSI_PURPLE}-------------------------------------------------------${ANSI_RESET}`);
   }
 
   renderMenu();
@@ -279,7 +224,8 @@ export async function runInteractiveMenu(lang: string = "en"): Promise<void> {
 
   return new Promise((resolve) => {
     const handleKey = async (_str: string, key: readline.Key) => {
-      if (key.ctrl && key.name === "c") {
+      if ((key.ctrl && key.name === "c") || key.name === "escape") {
+        console.log(`\n\nReturning / Exiting CLI shell...`);
         process.exit(0);
       }
 
