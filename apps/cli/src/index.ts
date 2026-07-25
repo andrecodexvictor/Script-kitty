@@ -12,7 +12,7 @@ program
   .command("audit")
   .description("Execute comprehensive security audit across SAST Code, Secrets, HTTP Headers, and AI Guardrails")
   .argument("[path]", "Target workspace path to audit", ".")
-  .action((path) => {
+  .action((path: string) => {
     printBanner();
     console.log(`${ANSI_BOLD}${ANSI_GREEN}[*] Initiating Enterprise Security Audit on '${path}'...${ANSI_RESET}\n`);
     console.log(`🔍 [1/4] Code SAST Analysis: 0 high-risk vulnerabilities detected.`);
@@ -26,7 +26,7 @@ program
   .command("scout")
   .description("Run passive exposure discovery on a scoped target")
   .argument("<target>", "Target URL or IP (must be in scope.md)")
-  .action((target) => {
+  .action((target: string) => {
     printBanner();
     console.log(`\n🐱 [Script Kitty] Scouting target: ${target}...`);
     console.log(`🔒 Loading context (.dotstack, .dotarchitecture, .dotcontext)...`);
@@ -46,7 +46,7 @@ program
   .command("scan-secrets")
   .description("Scan codebase for hardcoded credentials, API keys, and private tokens")
   .argument("<path>", "Directory or file path to scan")
-  .action((path) => {
+  .action((path: string) => {
     printBanner();
     console.log(`\n🔑 [Secret Scanner] Scanning directory: ${path}...`);
     console.log(`🔍 Secret Scanner Result:`);
@@ -62,7 +62,7 @@ program
   .command("scan-headers")
   .description("Evaluate security headers (HSTS, CSP, X-Frame-Options) of an HTTP endpoint")
   .argument("<target>", "HTTP/HTTPS target URL")
-  .action((target) => {
+  .action((target: string) => {
     printBanner();
     console.log(`\n🌐 [Header Scanner] Evaluating HTTP security headers for ${target}...`);
     console.log(JSON.stringify({
@@ -78,7 +78,7 @@ program
   .command("verify-guardrails")
   .description("Test AI LLM application against prompt injection, jailbreaks, and unsafe tool invocation")
   .argument("<target>", "AI Endpoint or Agent Target")
-  .action((target) => {
+  .action((target: string) => {
     printBanner();
     console.log(`\n🤖 [AI Guardrail Validator] Testing AI target: ${target}...`);
     console.log(JSON.stringify({
@@ -100,10 +100,10 @@ program
   .argument("<target>", "Target URL")
   .argument("<finding_id>", "Finding identifier")
   .option("--dry-run", "Run in safe dry-run mode", true)
-  .action((target, findingId, options) => {
+  .action((target: string, findingId: string, options: { dryRun?: boolean }) => {
     printBanner();
     console.log(`\n🐱 [Script Kitty] Verifying finding ${findingId} on ${target}...`);
-    if (options.dry_run) {
+    if (options.dryRun) {
       console.log(`🛡️ Dry-run mode enabled. No state modifications will be performed.`);
       console.log(`✅ Verification confirmed finding impact cleanly without collateral risk.`);
     } else {
@@ -116,7 +116,7 @@ program
   .command("patch")
   .description("Generate remediation playbook & code fix advice")
   .argument("<finding_id>", "Finding identifier")
-  .action((findingId) => {
+  .action((findingId: string) => {
     printBanner();
     console.log(`\n🐾 [Patch Cat] Generating remediation playbook for ${findingId}...`);
     console.log(`
@@ -140,7 +140,7 @@ program
   .description("Execute regression check to confirm fix closure")
   .argument("<target>", "Target URL")
   .argument("<finding_id>", "Finding identifier")
-  .action((target, findingId) => {
+  .action((target: string, findingId: string) => {
     printBanner();
     console.log(`\n🐱 [Script Kitty] Running regression check for ${findingId} on ${target}...`);
     console.log(`✅ Finding ${findingId} confirmed CLOSED. Regression check passed!`);
