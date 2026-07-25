@@ -1,6 +1,7 @@
 /**
- * Script Kitty Enterprise - Ultra-Clean Block Art Banner Engine
- * Renders crisp, in-place ASCII/Block Art without console stacking or duplicate scrollback issues.
+ * Script Kitty Enterprise - Solid Unicode Block Art Cat Portrait Banner
+ * Combines high-density Unicode Block Art (█, ▀, ▄, ▌, ▐) with full cat anatomy:
+ * Pointed ears, Fedora with SK logo, Cyber glasses & eyes, Cat nose, Whiskers, Smoking Pipe, Coat & Tie.
  */
 
 export const C_GREEN  = "\x1b[38;2;0;255;157m";    // Matrix Cyber Green (#00FF9D)
@@ -17,10 +18,10 @@ export const ANSI_GREEN = C_GREEN;
 export const ANSI_PURPLE = C_PURPLE;
 export const ANSI_CYAN = C_CYAN;
 export const ANSI_YELLOW = C_YELLOW;
+export const ANSI_RED = C_RED;
 export const ANSI_RESET = RESET;
 export const ANSI_BOLD = BOLD;
 
-// Complete Solid Block Art Cat Portrait
 export const STATIC_BANNER = `
 ${C_GREEN}${BOLD} █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█${RESET}
 ${C_GREEN}${BOLD} █ ${C_PINK}${BOLD} S C R I P T   K I T T Y   E N T E R P R I S E   E N G I N E ${C_GREEN}${BOLD} █${RESET}
@@ -45,11 +46,9 @@ ${C_GREEN}       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 `;
 
 export function printBanner(): void {
-  // Always print the complete banner once without duplicate scrollback
   process.stdout.write(STATIC_BANNER + "\n");
 }
 
 export async function animateBanner(): Promise<void> {
-  // Safe default: print the static banner cleanly once to avoid terminal scrollback issues
   printBanner();
 }
