@@ -1,0 +1,1641 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-07-25T21:33:19Z",
+  "workspace": "C:\\Users\\adm\\Desktop\\Script Kitty",
+  "nodes": [
+    {
+      "id": "workspace::Script Kitty",
+      "label": "Script Kitty",
+      "type": "WorkspaceRoot",
+      "properties": {
+        "path": "C:\\Users\\adm\\Desktop\\Script Kitty"
+      }
+    },
+    {
+      "id": "file::.\\agent-spec.md",
+      "label": "agent-spec.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": ".\\agent-spec.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "file::.\\package-lock.json",
+      "label": "package-lock.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": ".\\package-lock.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "file::.\\package.json",
+      "label": "package.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": ".\\package.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "file::.\\README.md",
+      "label": "README.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": ".\\README.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "file::.\\RELEASE_NOTES.md",
+      "label": "RELEASE_NOTES.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": ".\\RELEASE_NOTES.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "file::.\\scope.md",
+      "label": "scope.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": ".\\scope.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "folder::.context",
+      "label": ".context",
+      "type": "Directory",
+      "properties": {
+        "path": ".context"
+      }
+    },
+    {
+      "id": "folder::.context\\config",
+      "label": ".context\\config",
+      "type": "Directory",
+      "properties": {
+        "path": ".context\\config"
+      }
+    },
+    {
+      "id": "file::.context\\config\\credentials.json",
+      "label": "credentials.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": ".context\\config\\credentials.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "file::.context\\config\\runtime.json",
+      "label": "runtime.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": ".context\\config\\runtime.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "folder::.context\\graph",
+      "label": ".context\\graph",
+      "type": "Directory",
+      "properties": {
+        "path": ".context\\graph"
+      }
+    },
+    {
+      "id": "folder::.context\\plans",
+      "label": ".context\\plans",
+      "type": "Directory",
+      "properties": {
+        "path": ".context\\plans"
+      }
+    },
+    {
+      "id": "file::.context\\plans\\v1_0_release.md",
+      "label": "v1_0_release.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": ".context\\plans\\v1_0_release.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "folder::.context\\runtime",
+      "label": ".context\\runtime",
+      "type": "Directory",
+      "properties": {
+        "path": ".context\\runtime"
+      }
+    },
+    {
+      "id": "file::.context\\runtime\\memory.json",
+      "label": "memory.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": ".context\\runtime\\memory.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "folder::.context\\workflows",
+      "label": ".context\\workflows",
+      "type": "Directory",
+      "properties": {
+        "path": ".context\\workflows"
+      }
+    },
+    {
+      "id": "file::.context\\workflows\\prevc.json",
+      "label": "prevc.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": ".context\\workflows\\prevc.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "folder::apps",
+      "label": "apps",
+      "type": "Directory",
+      "properties": {
+        "path": "apps"
+      }
+    },
+    {
+      "id": "folder::apps\\cli",
+      "label": "apps\\cli",
+      "type": "Directory",
+      "properties": {
+        "path": "apps\\cli"
+      }
+    },
+    {
+      "id": "file::apps\\cli\\package.json",
+      "label": "package.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\cli\\package.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "file::apps\\cli\\tsconfig.json",
+      "label": "tsconfig.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\cli\\tsconfig.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "folder::apps\\cli\\src",
+      "label": "apps\\cli\\src",
+      "type": "Directory",
+      "properties": {
+        "path": "apps\\cli\\src"
+      }
+    },
+    {
+      "id": "file::apps\\cli\\src\\banner.ts",
+      "label": "banner.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\cli\\src\\banner.ts",
+        "ext": ".ts"
+      }
+    },
+    {
+      "id": "file::apps\\cli\\src\\chat.ts",
+      "label": "chat.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\cli\\src\\chat.ts",
+        "ext": ".ts"
+      }
+    },
+    {
+      "id": "file::apps\\cli\\src\\credentials.ts",
+      "label": "credentials.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\cli\\src\\credentials.ts",
+        "ext": ".ts"
+      }
+    },
+    {
+      "id": "file::apps\\cli\\src\\i18n.ts",
+      "label": "i18n.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\cli\\src\\i18n.ts",
+        "ext": ".ts"
+      }
+    },
+    {
+      "id": "file::apps\\cli\\src\\index.ts",
+      "label": "index.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\cli\\src\\index.ts",
+        "ext": ".ts"
+      }
+    },
+    {
+      "id": "file::apps\\cli\\src\\interactive.ts",
+      "label": "interactive.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\cli\\src\\interactive.ts",
+        "ext": ".ts"
+      }
+    },
+    {
+      "id": "file::apps\\cli\\src\\real_scanner.ts",
+      "label": "real_scanner.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\cli\\src\\real_scanner.ts",
+        "ext": ".ts"
+      }
+    },
+    {
+      "id": "folder::apps\\mcp-server",
+      "label": "apps\\mcp-server",
+      "type": "Directory",
+      "properties": {
+        "path": "apps\\mcp-server"
+      }
+    },
+    {
+      "id": "file::apps\\mcp-server\\package.json",
+      "label": "package.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\mcp-server\\package.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "file::apps\\mcp-server\\tsconfig.json",
+      "label": "tsconfig.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\mcp-server\\tsconfig.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "folder::apps\\mcp-server\\src",
+      "label": "apps\\mcp-server\\src",
+      "type": "Directory",
+      "properties": {
+        "path": "apps\\mcp-server\\src"
+      }
+    },
+    {
+      "id": "file::apps\\mcp-server\\src\\index.ts",
+      "label": "index.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\mcp-server\\src\\index.ts",
+        "ext": ".ts"
+      }
+    },
+    {
+      "id": "folder::apps\\ui",
+      "label": "apps\\ui",
+      "type": "Directory",
+      "properties": {
+        "path": "apps\\ui"
+      }
+    },
+    {
+      "id": "file::apps\\ui\\package.json",
+      "label": "package.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\ui\\package.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "file::apps\\ui\\tsconfig.json",
+      "label": "tsconfig.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\ui\\tsconfig.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "folder::apps\\ui\\public",
+      "label": "apps\\ui\\public",
+      "type": "Directory",
+      "properties": {
+        "path": "apps\\ui\\public"
+      }
+    },
+    {
+      "id": "folder::apps\\ui\\src",
+      "label": "apps\\ui\\src",
+      "type": "Directory",
+      "properties": {
+        "path": "apps\\ui\\src"
+      }
+    },
+    {
+      "id": "file::apps\\ui\\src\\main.ts",
+      "label": "main.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\ui\\src\\main.ts",
+        "ext": ".ts"
+      }
+    },
+    {
+      "id": "file::apps\\ui\\src\\mascot3d.ts",
+      "label": "mascot3d.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "apps\\ui\\src\\mascot3d.ts",
+        "ext": ".ts"
+      }
+    },
+    {
+      "id": "folder::assets",
+      "label": "assets",
+      "type": "Directory",
+      "properties": {
+        "path": "assets"
+      }
+    },
+    {
+      "id": "folder::docs",
+      "label": "docs",
+      "type": "Directory",
+      "properties": {
+        "path": "docs"
+      }
+    },
+    {
+      "id": "file::docs\\prd.md",
+      "label": "prd.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "docs\\prd.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "folder::docs\\internal_spec",
+      "label": "docs\\internal_spec",
+      "type": "Directory",
+      "properties": {
+        "path": "docs\\internal_spec"
+      }
+    },
+    {
+      "id": "file::docs\\internal_spec\\agent-spec.md",
+      "label": "agent-spec.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "docs\\internal_spec\\agent-spec.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "file::docs\\internal_spec\\dotarchitecture.md",
+      "label": "dotarchitecture.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "docs\\internal_spec\\dotarchitecture.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "file::docs\\internal_spec\\dotcontext.md",
+      "label": "dotcontext.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "docs\\internal_spec\\dotcontext.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "file::docs\\internal_spec\\dotstack.md",
+      "label": "dotstack.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "docs\\internal_spec\\dotstack.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "file::docs\\internal_spec\\scope.md",
+      "label": "scope.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "docs\\internal_spec\\scope.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "file::docs\\internal_spec\\script-kitty-prd.md",
+      "label": "script-kitty-prd.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "docs\\internal_spec\\script-kitty-prd.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "file::docs\\internal_spec\\updates.md",
+      "label": "updates.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "docs\\internal_spec\\updates.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "folder::packages",
+      "label": "packages",
+      "type": "Directory",
+      "properties": {
+        "path": "packages"
+      }
+    },
+    {
+      "id": "folder::packages\\agent_runtime",
+      "label": "packages\\agent_runtime",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\agent_runtime"
+      }
+    },
+    {
+      "id": "folder::packages\\agent_runtime\\script_kitty_agent",
+      "label": "packages\\agent_runtime\\script_kitty_agent",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\agent_runtime\\script_kitty_agent"
+      }
+    },
+    {
+      "id": "file::packages\\agent_runtime\\script_kitty_agent\\auto_scan.py",
+      "label": "auto_scan.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\agent_runtime\\script_kitty_agent\\auto_scan.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\agent_runtime\\script_kitty_agent\\defensive_analyzer.py",
+      "label": "defensive_analyzer.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\agent_runtime\\script_kitty_agent\\defensive_analyzer.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\agent_runtime\\script_kitty_agent\\defensive_harness.py",
+      "label": "defensive_harness.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\agent_runtime\\script_kitty_agent\\defensive_harness.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\agent_runtime\\script_kitty_agent\\knowledge_graph_memory.py",
+      "label": "knowledge_graph_memory.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\agent_runtime\\script_kitty_agent\\knowledge_graph_memory.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\agent_runtime\\script_kitty_agent\\main.py",
+      "label": "main.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\agent_runtime\\script_kitty_agent\\main.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\agent_runtime\\script_kitty_agent\\memory.py",
+      "label": "memory.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\agent_runtime\\script_kitty_agent\\memory.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\agent_runtime\\script_kitty_agent\\modular_harness.py",
+      "label": "modular_harness.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\agent_runtime\\script_kitty_agent\\modular_harness.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\agent_runtime\\script_kitty_agent\\self_learning_memory.py",
+      "label": "self_learning_memory.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\agent_runtime\\script_kitty_agent\\self_learning_memory.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\agent_runtime\\script_kitty_agent\\web2_harness.py",
+      "label": "web2_harness.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\agent_runtime\\script_kitty_agent\\web2_harness.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\agent_runtime\\script_kitty_agent\\web3_harness.py",
+      "label": "web3_harness.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\agent_runtime\\script_kitty_agent\\web3_harness.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "folder::packages\\agent_runtime\\script_kitty_agent\\__pycache__",
+      "label": "packages\\agent_runtime\\script_kitty_agent\\__pycache__",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\agent_runtime\\script_kitty_agent\\__pycache__"
+      }
+    },
+    {
+      "id": "folder::packages\\agent_runtime\\script_kitty_agent_runtime.egg-info",
+      "label": "packages\\agent_runtime\\script_kitty_agent_runtime.egg-info",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\agent_runtime\\script_kitty_agent_runtime.egg-info"
+      }
+    },
+    {
+      "id": "folder::packages\\audit",
+      "label": "packages\\audit",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\audit"
+      }
+    },
+    {
+      "id": "folder::packages\\audit\\src",
+      "label": "packages\\audit\\src",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\audit\\src"
+      }
+    },
+    {
+      "id": "file::packages\\audit\\src\\lib.rs",
+      "label": "lib.rs",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\audit\\src\\lib.rs",
+        "ext": ".rs"
+      }
+    },
+    {
+      "id": "folder::packages\\plugin_sdk",
+      "label": "packages\\plugin_sdk",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\plugin_sdk"
+      }
+    },
+    {
+      "id": "folder::packages\\plugin_sdk\\script_kitty_plugin_sdk",
+      "label": "packages\\plugin_sdk\\script_kitty_plugin_sdk",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\plugin_sdk\\script_kitty_plugin_sdk"
+      }
+    },
+    {
+      "id": "file::packages\\plugin_sdk\\script_kitty_plugin_sdk\\__init__.py",
+      "label": "__init__.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\plugin_sdk\\script_kitty_plugin_sdk\\__init__.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "folder::packages\\policies",
+      "label": "packages\\policies",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\policies"
+      }
+    },
+    {
+      "id": "folder::packages\\policies\\src",
+      "label": "packages\\policies\\src",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\policies\\src"
+      }
+    },
+    {
+      "id": "file::packages\\policies\\src\\crypto.rs",
+      "label": "crypto.rs",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\policies\\src\\crypto.rs",
+        "ext": ".rs"
+      }
+    },
+    {
+      "id": "file::packages\\policies\\src\\lib.rs",
+      "label": "lib.rs",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\policies\\src\\lib.rs",
+        "ext": ".rs"
+      }
+    },
+    {
+      "id": "folder::packages\\remediation",
+      "label": "packages\\remediation",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\remediation"
+      }
+    },
+    {
+      "id": "folder::packages\\remediation\\script_kitty_remediation",
+      "label": "packages\\remediation\\script_kitty_remediation",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\remediation\\script_kitty_remediation"
+      }
+    },
+    {
+      "id": "file::packages\\remediation\\script_kitty_remediation\\exporter.py",
+      "label": "exporter.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\remediation\\script_kitty_remediation\\exporter.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\remediation\\script_kitty_remediation\\patcher.py",
+      "label": "patcher.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\remediation\\script_kitty_remediation\\patcher.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\remediation\\script_kitty_remediation\\zenpr_bridge.py",
+      "label": "zenpr_bridge.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\remediation\\script_kitty_remediation\\zenpr_bridge.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "folder::packages\\scanners",
+      "label": "packages\\scanners",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\scanners"
+      }
+    },
+    {
+      "id": "folder::packages\\scanners\\script_kitty_scanners",
+      "label": "packages\\scanners\\script_kitty_scanners",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\scanners\\script_kitty_scanners"
+      }
+    },
+    {
+      "id": "file::packages\\scanners\\script_kitty_scanners\\architecture_auditor.py",
+      "label": "architecture_auditor.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\scanners\\script_kitty_scanners\\architecture_auditor.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\scanners\\script_kitty_scanners\\code_vulnerabilities.py",
+      "label": "code_vulnerabilities.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\scanners\\script_kitty_scanners\\code_vulnerabilities.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\scanners\\script_kitty_scanners\\crypto_auditor.py",
+      "label": "crypto_auditor.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\scanners\\script_kitty_scanners\\crypto_auditor.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\scanners\\script_kitty_scanners\\db_auth_auditor.py",
+      "label": "db_auth_auditor.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\scanners\\script_kitty_scanners\\db_auth_auditor.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\scanners\\script_kitty_scanners\\dependency_auditor.py",
+      "label": "dependency_auditor.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\scanners\\script_kitty_scanners\\dependency_auditor.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\scanners\\script_kitty_scanners\\headers.py",
+      "label": "headers.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\scanners\\script_kitty_scanners\\headers.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\scanners\\script_kitty_scanners\\log_auditor.py",
+      "label": "log_auditor.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\scanners\\script_kitty_scanners\\log_auditor.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\scanners\\script_kitty_scanners\\polyglot_sast.py",
+      "label": "polyglot_sast.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\scanners\\script_kitty_scanners\\polyglot_sast.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "file::packages\\scanners\\script_kitty_scanners\\secrets.py",
+      "label": "secrets.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\scanners\\script_kitty_scanners\\secrets.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "folder::packages\\scanners\\script_kitty_scanners\\__pycache__",
+      "label": "packages\\scanners\\script_kitty_scanners\\__pycache__",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\scanners\\script_kitty_scanners\\__pycache__"
+      }
+    },
+    {
+      "id": "folder::packages\\scanners\\script_kitty_scanners.egg-info",
+      "label": "packages\\scanners\\script_kitty_scanners.egg-info",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\scanners\\script_kitty_scanners.egg-info"
+      }
+    },
+    {
+      "id": "folder::packages\\validators",
+      "label": "packages\\validators",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\validators"
+      }
+    },
+    {
+      "id": "folder::packages\\validators\\script_kitty_validators",
+      "label": "packages\\validators\\script_kitty_validators",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\validators\\script_kitty_validators"
+      }
+    },
+    {
+      "id": "file::packages\\validators\\script_kitty_validators\\guardrails.py",
+      "label": "guardrails.py",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "packages\\validators\\script_kitty_validators\\guardrails.py",
+        "ext": ".py"
+      }
+    },
+    {
+      "id": "folder::packages\\validators\\script_kitty_validators\\__pycache__",
+      "label": "packages\\validators\\script_kitty_validators\\__pycache__",
+      "type": "Directory",
+      "properties": {
+        "path": "packages\\validators\\script_kitty_validators\\__pycache__"
+      }
+    },
+    {
+      "id": "folder::scripts",
+      "label": "scripts",
+      "type": "Directory",
+      "properties": {
+        "path": "scripts"
+      }
+    },
+    {
+      "id": "folder::vercel-app",
+      "label": "vercel-app",
+      "type": "Directory",
+      "properties": {
+        "path": "vercel-app"
+      }
+    },
+    {
+      "id": "file::vercel-app\\package-lock.json",
+      "label": "package-lock.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "vercel-app\\package-lock.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "file::vercel-app\\package.json",
+      "label": "package.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "vercel-app\\package.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "file::vercel-app\\README.md",
+      "label": "README.md",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "vercel-app\\README.md",
+        "ext": ".md"
+      }
+    },
+    {
+      "id": "file::vercel-app\\tsconfig.json",
+      "label": "tsconfig.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "vercel-app\\tsconfig.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "file::vercel-app\\vercel.json",
+      "label": "vercel.json",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "vercel-app\\vercel.json",
+        "ext": ".json"
+      }
+    },
+    {
+      "id": "file::vercel-app\\vite.config.ts",
+      "label": "vite.config.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "vercel-app\\vite.config.ts",
+        "ext": ".ts"
+      }
+    },
+    {
+      "id": "folder::vercel-app\\public",
+      "label": "vercel-app\\public",
+      "type": "Directory",
+      "properties": {
+        "path": "vercel-app\\public"
+      }
+    },
+    {
+      "id": "folder::vercel-app\\src",
+      "label": "vercel-app\\src",
+      "type": "Directory",
+      "properties": {
+        "path": "vercel-app\\src"
+      }
+    },
+    {
+      "id": "file::vercel-app\\src\\main.ts",
+      "label": "main.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "vercel-app\\src\\main.ts",
+        "ext": ".ts"
+      }
+    },
+    {
+      "id": "file::vercel-app\\src\\mascot3d.ts",
+      "label": "mascot3d.ts",
+      "type": "SourceFile",
+      "properties": {
+        "rel_path": "vercel-app\\src\\mascot3d.ts",
+        "ext": ".ts"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "workspace::Script Kitty",
+      "target": "file::.\\agent-spec.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "file::.\\package-lock.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "file::.\\package.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "file::.\\README.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "file::.\\RELEASE_NOTES.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "file::.\\scope.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::.context",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::.context\\config",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::.context\\config",
+      "target": "file::.context\\config\\credentials.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::.context\\config",
+      "target": "file::.context\\config\\runtime.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::.context\\graph",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::.context\\plans",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::.context\\plans",
+      "target": "file::.context\\plans\\v1_0_release.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::.context\\runtime",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::.context\\runtime",
+      "target": "file::.context\\runtime\\memory.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::.context\\workflows",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::.context\\workflows",
+      "target": "file::.context\\workflows\\prevc.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::apps",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::apps\\cli",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\cli",
+      "target": "file::apps\\cli\\package.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\cli",
+      "target": "file::apps\\cli\\tsconfig.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::apps\\cli\\src",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\cli\\src",
+      "target": "file::apps\\cli\\src\\banner.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\cli\\src",
+      "target": "file::apps\\cli\\src\\chat.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\cli\\src",
+      "target": "file::apps\\cli\\src\\credentials.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\cli\\src",
+      "target": "file::apps\\cli\\src\\i18n.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\cli\\src",
+      "target": "file::apps\\cli\\src\\index.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\cli\\src",
+      "target": "file::apps\\cli\\src\\interactive.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\cli\\src",
+      "target": "file::apps\\cli\\src\\real_scanner.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::apps\\mcp-server",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\mcp-server",
+      "target": "file::apps\\mcp-server\\package.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\mcp-server",
+      "target": "file::apps\\mcp-server\\tsconfig.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::apps\\mcp-server\\src",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\mcp-server\\src",
+      "target": "file::apps\\mcp-server\\src\\index.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::apps\\ui",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\ui",
+      "target": "file::apps\\ui\\package.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\ui",
+      "target": "file::apps\\ui\\tsconfig.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::apps\\ui\\public",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::apps\\ui\\src",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\ui\\src",
+      "target": "file::apps\\ui\\src\\main.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::apps\\ui\\src",
+      "target": "file::apps\\ui\\src\\mascot3d.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::assets",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::docs",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::docs",
+      "target": "file::docs\\prd.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::docs\\internal_spec",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::docs\\internal_spec",
+      "target": "file::docs\\internal_spec\\agent-spec.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::docs\\internal_spec",
+      "target": "file::docs\\internal_spec\\dotarchitecture.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::docs\\internal_spec",
+      "target": "file::docs\\internal_spec\\dotcontext.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::docs\\internal_spec",
+      "target": "file::docs\\internal_spec\\dotstack.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::docs\\internal_spec",
+      "target": "file::docs\\internal_spec\\scope.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::docs\\internal_spec",
+      "target": "file::docs\\internal_spec\\script-kitty-prd.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::docs\\internal_spec",
+      "target": "file::docs\\internal_spec\\updates.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\agent_runtime",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\agent_runtime\\script_kitty_agent",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\agent_runtime\\script_kitty_agent",
+      "target": "file::packages\\agent_runtime\\script_kitty_agent\\auto_scan.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\agent_runtime\\script_kitty_agent",
+      "target": "file::packages\\agent_runtime\\script_kitty_agent\\defensive_analyzer.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\agent_runtime\\script_kitty_agent",
+      "target": "file::packages\\agent_runtime\\script_kitty_agent\\defensive_harness.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\agent_runtime\\script_kitty_agent",
+      "target": "file::packages\\agent_runtime\\script_kitty_agent\\knowledge_graph_memory.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\agent_runtime\\script_kitty_agent",
+      "target": "file::packages\\agent_runtime\\script_kitty_agent\\main.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\agent_runtime\\script_kitty_agent",
+      "target": "file::packages\\agent_runtime\\script_kitty_agent\\memory.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\agent_runtime\\script_kitty_agent",
+      "target": "file::packages\\agent_runtime\\script_kitty_agent\\modular_harness.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\agent_runtime\\script_kitty_agent",
+      "target": "file::packages\\agent_runtime\\script_kitty_agent\\self_learning_memory.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\agent_runtime\\script_kitty_agent",
+      "target": "file::packages\\agent_runtime\\script_kitty_agent\\web2_harness.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\agent_runtime\\script_kitty_agent",
+      "target": "file::packages\\agent_runtime\\script_kitty_agent\\web3_harness.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\agent_runtime\\script_kitty_agent\\__pycache__",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\agent_runtime\\script_kitty_agent_runtime.egg-info",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\audit",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\audit\\src",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\audit\\src",
+      "target": "file::packages\\audit\\src\\lib.rs",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\plugin_sdk",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\plugin_sdk\\script_kitty_plugin_sdk",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\plugin_sdk\\script_kitty_plugin_sdk",
+      "target": "file::packages\\plugin_sdk\\script_kitty_plugin_sdk\\__init__.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\policies",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\policies\\src",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\policies\\src",
+      "target": "file::packages\\policies\\src\\crypto.rs",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\policies\\src",
+      "target": "file::packages\\policies\\src\\lib.rs",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\remediation",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\remediation\\script_kitty_remediation",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\remediation\\script_kitty_remediation",
+      "target": "file::packages\\remediation\\script_kitty_remediation\\exporter.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\remediation\\script_kitty_remediation",
+      "target": "file::packages\\remediation\\script_kitty_remediation\\patcher.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\remediation\\script_kitty_remediation",
+      "target": "file::packages\\remediation\\script_kitty_remediation\\zenpr_bridge.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\scanners",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\scanners\\script_kitty_scanners",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\scanners\\script_kitty_scanners",
+      "target": "file::packages\\scanners\\script_kitty_scanners\\architecture_auditor.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\scanners\\script_kitty_scanners",
+      "target": "file::packages\\scanners\\script_kitty_scanners\\code_vulnerabilities.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\scanners\\script_kitty_scanners",
+      "target": "file::packages\\scanners\\script_kitty_scanners\\crypto_auditor.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\scanners\\script_kitty_scanners",
+      "target": "file::packages\\scanners\\script_kitty_scanners\\db_auth_auditor.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\scanners\\script_kitty_scanners",
+      "target": "file::packages\\scanners\\script_kitty_scanners\\dependency_auditor.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\scanners\\script_kitty_scanners",
+      "target": "file::packages\\scanners\\script_kitty_scanners\\headers.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\scanners\\script_kitty_scanners",
+      "target": "file::packages\\scanners\\script_kitty_scanners\\log_auditor.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\scanners\\script_kitty_scanners",
+      "target": "file::packages\\scanners\\script_kitty_scanners\\polyglot_sast.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\scanners\\script_kitty_scanners",
+      "target": "file::packages\\scanners\\script_kitty_scanners\\secrets.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\scanners\\script_kitty_scanners\\__pycache__",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\scanners\\script_kitty_scanners.egg-info",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\validators",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\validators\\script_kitty_validators",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::packages\\validators\\script_kitty_validators",
+      "target": "file::packages\\validators\\script_kitty_validators\\guardrails.py",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::packages\\validators\\script_kitty_validators\\__pycache__",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::scripts",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::vercel-app",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::vercel-app",
+      "target": "file::vercel-app\\package-lock.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::vercel-app",
+      "target": "file::vercel-app\\package.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::vercel-app",
+      "target": "file::vercel-app\\README.md",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::vercel-app",
+      "target": "file::vercel-app\\tsconfig.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::vercel-app",
+      "target": "file::vercel-app\\vercel.json",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::vercel-app",
+      "target": "file::vercel-app\\vite.config.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::vercel-app\\public",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace::Script Kitty",
+      "target": "folder::vercel-app\\src",
+      "relation": "CONTAINS_DIR",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::vercel-app\\src",
+      "target": "file::vercel-app\\src\\main.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    },
+    {
+      "source": "folder::vercel-app\\src",
+      "target": "file::vercel-app\\src\\mascot3d.ts",
+      "relation": "CONTAINS_FILE",
+      "weight": 1.0
+    }
+  ]
+}

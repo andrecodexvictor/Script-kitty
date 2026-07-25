@@ -41,6 +41,7 @@ Combining a cyber detective cat identity (**Patch Cat**) with a rigorous operati
 
 - **🚀 One-Word Global CLI (`sk` / `script-kitty`)**: Run `sk` without subcommands to launch the interactive arrow-key TUI menu.
 - **⚡ Native ZenPR Integration Bridge**: Direct integration with [ZenPR](https://github.com/andrecodexvictor/ZenPR) to convert Script Kitty findings automatically into defensive Pull Requests.
+- **🕸️ Persistent Knowledge Graph & LangGraph Memory**: Automatically indexes codebase architecture, files, and relationships into persistent graph nodes (`.context/graph/knowledge_graph.json`) upon installation.
 - **🧠 Self-Learning Adaptive Memory**: Automatically records codebase architecture patterns and user preferences into `.context/runtime/memory.json` as the agent navigates codebases.
 - **🎮 Interactive Checkbox Suite Selector**: Use arrow keys (`⬆️/⬇️`) and Spacebar to select exactly which security modules to run.
 - **💬 Direct Agent Conversation (`sk chat`)**: Direct natural language chat with the Detective Patch Cat agent (requires authenticated AI key/login).
