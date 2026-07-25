@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "script-kitty-plugin-sdk"
+version = "0.1.0"
+description = "Plugin SDK for extending Script Kitty scanners, validators, and remediation engines"
+authors = [{ name = "Script Kitty Team" }]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0"
+]

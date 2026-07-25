@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+venv/
+.venv/
+
+# Build Outputs
+dist/
+build/
+target/
+*.tar.gz
+*.zip
+
+# Environment & Secrets
+.env
+.env.local
+*.pem
+*.key
+
+# Temporary Artifacts & System Files
+extracted_artifacts/
+artifacts.zip
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp

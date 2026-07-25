@@ -1,0 +1,28 @@
+# Script Kitty - .dotarchitecture Configuration
+
+## Trust Boundaries & Permission Map
+
+### Trust Zones
+1. **Untrusted Boundary (Zone 0)**: External HTTP inputs, raw scan targets, third-party LLM prompt responses, external MCP tool descriptions.
+2. **Scout & Sandbox Boundary (Zone 1)**: Passive discovery scanners, read-only fingerprinting, dry-run validators.
+3. **High-Trust Execution Core (Zone 2)**: Rust zero-trust policy engine, hash-chained audit logger, scope validator.
+4. **Operator Approval Gate (Zone 3)**: Human-in-the-loop confirmation for state-changing or active verification actions.
+
+### Architecture Rules
+- **Hexagonal Boundary Enforcement**: Domain models in `packages/core` or `packages/policies` MUST NEVER import adapters, UI controllers, or network IO directly.
+- **Data Flow Pipeline**:
+  `Scope Intake` -> `Policy Check` -> `Discovery (Scout)` -> `Approval Gate` -> `Verification` -> `Patch Generation` -> `Recheck` -> `Audit Append`
+
+### MCP Tool Permissions Matrix
+| Tool Name | Risk Tier | Approval Required | Allowed Execution Modes |
+|---|---|---|---|
+| `scout_target` | Tier 1 (Low) | No | Scout, Verify, Patch, Recheck, Lab |
+| `verify_finding` | Tier 2 (Medium) | Yes (State-changing) | Verify, Lab |
+| `generate_patch` | Tier 1 (Low) | No | Patch, Recheck |
+| `run_recheck` | Tier 1 (Low) | No | Recheck |
+| `audit_log_inspect` | Tier 0 (Read-only) | No | All |
+
+### Failure Modes & Defensive Fallbacks
+- Policy evaluation failure: Block action immediately and record security event.
+- Scope mismatch: Reject target and notify operator.
+- Model prompt injection detected: Sanitize input, halt execution, log injection attempt.

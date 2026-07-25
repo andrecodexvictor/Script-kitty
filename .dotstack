@@ -1,0 +1,54 @@
+# Script Kitty - .dotstack Configuration
+
+## Stack Specification
+name: Script Kitty
+tagline: Your Patch Cat
+version: 0.1.0
+architecture_pattern: Modular Monorepo (Hexagonal Domain Engine + Async Agent Runtime)
+
+## Micro-Stack Matrix
+frontend:
+  framework: TypeScript (Vite + Vanilla CSS)
+  path: apps/ui
+  aesthetic: Sleek Cyberpunk Dark Mode (High-contrast green/purple accents)
+
+orchestration:
+  runtime: Node.js (TypeScript)
+  services:
+    - apps/server (API Gateway & Workflow Engine)
+    - apps/cli (Developer & Operator Shell)
+    - apps/mcp-server (Model Context Protocol Gateway)
+  mcp_tools:
+    - scout_target
+    - verify_finding
+    - generate_patch
+    - run_recheck
+    - audit_log_inspect
+
+agent_runtime:
+  runtime: Python 3.11+
+  packages:
+    - packages/agent_runtime (PREVC Harness & Subagent Manager)
+    - packages/scanners (Exposure & Fingerprint Discovery)
+    - packages/validators (Guardrail & Prompt Injection Tester)
+    - packages/remediation (Patch Cat Mitigation Generator)
+
+high_trust_core:
+  language: Rust (2021 Edition)
+  packages:
+    - packages/policies (Zero-Trust Policy Engine)
+    - packages/audit (Hash-Chained Cryptographic Audit Logger)
+
+## Runtime & Isolation
+deployment: Docker-first / Self-hosted
+sandbox_profiles:
+  scout: Low risk (Read-only discovery)
+  verify: Medium risk (Scoped impact check - Approval required for mutations)
+  patch: Low risk (Local playbook generation)
+  recheck: Low risk (Regression confirmation)
+  lab: High risk (Isolated VM / Container only)
+
+## Security Constraints
+zero_trust_tools: true
+approval_gate_required: true
+tamper_evident_audit: true

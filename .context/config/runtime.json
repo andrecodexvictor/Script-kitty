@@ -1,0 +1,14 @@
+{
+  "project_name": "Script Kitty",
+  "version": "1.0.0-rc1",
+  "harness": "dotcontext",
+  "workflow": "PREVC",
+  "active_phase": "EXECUTION",
+  "sensors_enabled": [
+    "tests-passing",
+    "typecheck-clean",
+    "scope-enforced",
+    "tamper-evident-audit"
+  ],
+  "autonomous_mode": false
+}

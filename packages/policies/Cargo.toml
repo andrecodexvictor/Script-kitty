@@ -1,0 +1,18 @@
+[package]
+name = "script-kitty-policies"
+version = "0.1.0"
+edition = "2021"
+authors = ["Script Kitty Team"]
+description = "Zero-trust policy engine for Script Kitty defensive security agent"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+regex = "1.10"
+thiserror = "1.0"
+
+[dev-dependencies]
+tokio = { version = "1.0", features = ["full"] }

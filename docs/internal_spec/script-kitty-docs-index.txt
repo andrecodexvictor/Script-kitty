@@ -1,0 +1,6 @@
+- scope.md
+- updates.md
+- agent-spec.md
+- dotstack.md
+- dotarchitecture.md
+- dotcontext.md
