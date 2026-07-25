@@ -3,7 +3,7 @@ import sys
 import json
 from typing import Dict, Any, List
 
-# Ensure python can import packages directly
+# Add workspace packages directory to sys.path
 current_dir = os.path.dirname(os.path.abspath(__file__))
 pkg_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
 
@@ -18,9 +18,9 @@ from script_kitty_scanners.code_vulnerabilities import CodeVulnerabilityScanner
 from script_kitty_validators.guardrails import AIGuardrailValidator
 from script_kitty_agent.memory import AgentContinuousMemory
 
-class ScriptKittyPlugAndPlayEngine:
-    """Zero-Config Plug-and-Play Security Auditor for Script Kitty.
-    Runs comprehensive scanning across Code SAST, Secrets, HTTP Headers, and AI Guardrails.
+class ScriptKittyAutoAuditor:
+    """Enterprise Automated Security Engine for Script Kitty.
+    Runs comprehensive security analysis across Code SAST, Secret Leaks, HTTP Headers, and AI Guardrails.
     """
 
     def __init__(self, target_path: str = ".", target_url: str = "http://localhost:3000"):
@@ -33,7 +33,7 @@ class ScriptKittyPlugAndPlayEngine:
         self.memory = AgentContinuousMemory(self.target_path)
 
     def run_full_audit(self) -> Dict[str, Any]:
-        print("\n[Script Kitty Plug-and-Play] Starting Zero-Config Security Audit...")
+        print("\n[Script Kitty Enterprise Engine] Starting Automated Security Audit...")
         print(f"Workspace Target: {self.target_path}")
         print(f"HTTP/AI Target: {self.target_url}\n")
 
@@ -93,6 +93,6 @@ class ScriptKittyPlugAndPlayEngine:
 
 if __name__ == "__main__":
     target = sys.argv[1] if len(sys.argv) > 1 else "."
-    engine = ScriptKittyPlugAndPlayEngine(target_path=target)
+    engine = ScriptKittyAutoAuditor(target_path=target)
     report = engine.run_full_audit()
     print(json.dumps(report, indent=2))

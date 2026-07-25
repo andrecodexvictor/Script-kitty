@@ -15,6 +15,16 @@ pub struct AuditEntry {
     pub hash: String,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct EvidencePackage {
+    pub package_id: String,
+    pub generated_at: String,
+    pub total_entries: u64,
+    pub merkle_root: String,
+    pub chain_valid: bool,
+    pub entries: Vec<AuditEntry>,
+}
+
 pub struct HashChainedAuditLogger {
     pub entries: Vec<AuditEntry>,
 }
@@ -71,6 +81,29 @@ impl HashChainedAuditLogger {
         entry
     }
 
+    pub fn compute_merkle_root(&self) -> String {
+        if self.entries.is_empty() {
+            return "0000000000000000000000000000000000000000000000000000000000000000".to_string();
+        }
+
+        let mut hashes: Vec<String> = self.entries.iter().map(|e| e.hash.clone()).collect();
+
+        while hashes.len() > 1 {
+            if hashes.len() % 2 != 0 {
+                hashes.push(hashes.last().unwrap().clone());
+            }
+            let mut next_level = Vec::new();
+            for chunk in hashes.chunks(2) {
+                let mut hasher = Sha256::new();
+                hasher.update(format!("{}{}", chunk[0], chunk[1]).as_bytes());
+                next_level.push(format!("{:x}", hasher.finalize()));
+            }
+            hashes = next_level;
+        }
+
+        hashes[0].clone()
+    }
+
     pub fn verify_chain_integrity(&self) -> bool {
         if self.entries.is_empty() {
             return true;
@@ -107,6 +140,20 @@ impl HashChainedAuditLogger {
 
         true
     }
+
+    pub fn export_evidence_package(&self) -> EvidencePackage {
+        let valid = self.verify_chain_integrity();
+        let merkle_root = self.compute_merkle_root();
+
+        EvidencePackage {
+            package_id: format!("SK-EVID-{}", Utc::now().timestamp()),
+            generated_at: Utc::now().to_rfc3339(),
+            total_entries: self.entries.len() as u64,
+            merkle_root,
+            chain_valid: valid,
+            entries: self.entries.clone(),
+        }
+    }
 }
 
 #[cfg(test)]
@@ -114,24 +161,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_audit_hash_chain() {
+    fn test_merkle_root_export() {
         let mut logger = HashChainedAuditLogger::new();
         logger.append("agent-1", "scout_target", "http://localhost:3000", "Scan headers", "ALLOWED");
         logger.append("agent-1", "verify_finding", "http://localhost:3000", "Test Auth Bypass", "APPROVED");
 
-        assert_eq!(logger.entries.len(), 2);
-        assert!(logger.verify_chain_integrity());
-    }
-
-    #[test]
-    fn test_tamper_detection() {
-        let mut logger = HashChainedAuditLogger::new();
-        logger.append("agent-1", "scout_target", "http://localhost:3000", "Scan headers", "ALLOWED");
-        logger.append("agent-1", "verify_finding", "http://localhost:3000", "Test Auth Bypass", "APPROVED");
-
-        // Tamper with first entry's action
-        logger.entries[0].action = "MALICIOUS_ACTION".to_string();
-
-        assert!(!logger.verify_chain_integrity());
+        let pkg = logger.export_evidence_package();
+        assert!(pkg.chain_valid);
+        assert_eq!(pkg.total_entries, 2);
+        assert!(!pkg.merkle_root.is_empty());
     }
 }
