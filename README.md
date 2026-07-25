@@ -14,8 +14,10 @@
   <a href="https://github.com/andrecodexvictor/dotstack"><img src="https://img.shields.io/badge/Context-.dotstack-blue" alt="dotstack"></a>
   <a href="https://github.com/andrecodexvictor/dotarchiteture"><img src="https://img.shields.io/badge/Architecture-.dotarchitecture-purple" alt="dotarchitecture"></a>
   <a href="https://github.com/vinilana/dotcontext"><img src="https://img.shields.io/badge/Harness-.dotcontext-orange" alt="dotcontext"></a>
+  <a href="https://github.com/andrecodexvictor/ZenPR"><img src="https://img.shields.io/badge/Integration-ZenPR-violet" alt="ZenPR Integration"></a>
   <a href="https://modelcontextprotocol.io"><img src="https://img.shields.io/badge/MCP-Supported-emerald" alt="MCP Supported"></a>
 </p>
+
 
 ---
 
@@ -38,6 +40,8 @@ Combining a cyber detective cat identity (**Patch Cat**) with a rigorous operati
 ## ✨ Key Features & Capabilities
 
 - **🚀 One-Word Global CLI (`sk` / `script-kitty`)**: Run `sk` without subcommands to launch the interactive arrow-key TUI menu.
+- **⚡ Native ZenPR Integration Bridge**: Direct integration with [ZenPR](https://github.com/andrecodexvictor/ZenPR) to convert Script Kitty findings automatically into defensive Pull Requests.
+- **🧠 Self-Learning Adaptive Memory**: Automatically records codebase architecture patterns and user preferences into `.context/runtime/memory.json` as the agent navigates codebases.
 - **🎮 Interactive Checkbox Suite Selector**: Use arrow keys (`⬆️/⬇️`) and Spacebar to select exactly which security modules to run.
 - **💬 Direct Agent Conversation (`sk chat`)**: Direct natural language chat with the Detective Patch Cat agent (requires authenticated AI key/login).
 - **🔑 Multi-Provider AI Key Manager & Codex Login**: Native support for OpenAI (GPT-4o), Google Gemini (2.5 Flash/Pro), NVIDIA NIM, OpenRouter, Anthropic Claude, xAI Grok, and ChatGPT Codex Subscription Tokens.
