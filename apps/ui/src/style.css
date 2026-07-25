@@ -88,6 +88,33 @@ body {
   letter-spacing: 1px;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.lang-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.lang-selector select {
+  background: var(--bg-panel);
+  color: var(--accent-green);
+  border: 1px solid var(--border-accent);
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  cursor: pointer;
+  outline: none;
+}
+
 .status-badge {
   display: inline-flex;
   align-items: center;
