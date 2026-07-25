@@ -17,6 +17,8 @@ export const RESET    = "\x1b[0m";
 // Aliases for compatibility
 export const ANSI_GREEN = C_GREEN;
 export const ANSI_PURPLE = C_PURPLE;
+export const ANSI_CYAN = C_CYAN;
+export const ANSI_YELLOW = C_YELLOW;
 export const ANSI_RESET = RESET;
 export const ANSI_BOLD = BOLD;
 
