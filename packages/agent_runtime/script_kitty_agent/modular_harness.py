@@ -16,12 +16,13 @@ from script_kitty_scanners.headers import HeaderSecurityScanner
 from script_kitty_scanners.crypto_auditor import CryptographicVulnerabilityAuditor
 from script_kitty_scanners.architecture_auditor import SystemArchitectureAuditor
 from script_kitty_scanners.dependency_auditor import DependencyVulnerabilityAuditor
+from script_kitty_scanners.db_auth_auditor import DatabaseAuthSecurityAuditor
 from script_kitty_validators.guardrails import AIGuardrailValidator
 
 class ModularHarnessEngine:
     """Modular Defensive Security Harness Engine for Script Kitty.
     Coordinates Polyglot SAST, Web2/Web3 auditing, Cryptographic analysis,
-    Architecture & IaC auditing, Dependency Supply-Chain scanning, and AI Guardrail testing.
+    Database & Auth security auditing, Architecture & IaC auditing, Dependency scanning, and AI Guardrail testing.
     """
 
     def __init__(self, workspace_path: str = ".", max_token_budget: int = 500000):
@@ -34,6 +35,7 @@ class ModularHarnessEngine:
         self.crypto_auditor = CryptographicVulnerabilityAuditor()
         self.arch_auditor = SystemArchitectureAuditor()
         self.dep_auditor = DependencyVulnerabilityAuditor()
+        self.db_auth_auditor = DatabaseAuthSecurityAuditor()
         self.guardrail_validator = AIGuardrailValidator()
 
     def run_full_defensive_pass(self, target_url: str = "http://localhost:3000") -> Dict[str, Any]:
@@ -45,6 +47,7 @@ class ModularHarnessEngine:
         crypto_findings = self.crypto_auditor.audit_workspace(self.workspace_path)
         arch_findings = self.arch_auditor.audit_architecture_configs(self.workspace_path)
         dep_findings = self.dep_auditor.audit_dependencies(self.workspace_path)
+        db_auth_findings = self.db_auth_auditor.audit_database_and_auth(self.workspace_path)
         header_result = self.header_scanner.evaluate_headers(target_url)
         guardrail_result = self.guardrail_validator.test_llm_target(target_url)
 
@@ -54,6 +57,7 @@ class ModularHarnessEngine:
             crypto_findings +
             arch_findings +
             dep_findings +
+            db_auth_findings +
             header_result.get("findings", [])
         )
 
@@ -73,6 +77,7 @@ class ModularHarnessEngine:
                 "crypto_vulnerabilities": len(crypto_findings),
                 "architecture_iac_misconfigs": len(arch_findings),
                 "dependency_supply_chain_risks": len(dep_findings),
+                "database_and_auth_findings": len(db_auth_findings),
                 "insecure_headers": len(header_result.get("findings", [])),
                 "ai_guardrail_suites": len(guardrail_result.get("test_results", []))
             },
