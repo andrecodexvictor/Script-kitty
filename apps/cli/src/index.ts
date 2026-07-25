@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { animateBanner, printBanner, ANSI_GREEN, ANSI_PURPLE, ANSI_CYAN, ANSI_YELLOW, ANSI_RESET, ANSI_BOLD } from "./banner";
+import { printBanner, ANSI_GREEN, ANSI_PURPLE, ANSI_CYAN, ANSI_YELLOW, ANSI_RESET, ANSI_BOLD } from "./banner";
 import { getTranslation } from "./i18n";
 
 const program = new Command();
@@ -15,11 +15,11 @@ program
   .description("Execute comprehensive security audit across SAST Code, Secrets, HTTP Headers, and AI Guardrails")
   .argument("[path]", "Target workspace path to audit", ".")
   .option("-l, --lang <language>", "Language configuration (en, pt, es)", "en")
-  .action(async (path: string, options: { lang?: string }) => {
+  .action((path: string, options: { lang?: string }) => {
     const lang = options.lang || program.opts().lang || "en";
     const t = getTranslation(lang);
 
-    await animateBanner(2, 160);
+    printBanner();
 
     console.log(`${ANSI_BOLD}${ANSI_GREEN}${t.auditStart} '${path}'...${ANSI_RESET}\n`);
     console.log(t.stepSast);

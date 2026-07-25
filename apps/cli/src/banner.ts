@@ -1,7 +1,6 @@
 /**
- * Script Kitty Enterprise - Solid Unicode Block Art Cat Portrait Banner
- * Combines high-density Unicode Block Art (█, ▀, ▄, ▌, ▐) with full cat anatomy:
- * Pointed ears, Fedora with SK logo, Cyber glasses & eyes, Cat nose, Whiskers, Smoking Pipe, Coat & Tie.
+ * Script Kitty Enterprise - Ultra-Clean Block Art Banner Engine
+ * Renders crisp, in-place ASCII/Block Art without console stacking or duplicate scrollback issues.
  */
 
 export const C_GREEN  = "\x1b[38;2;0;255;157m";    // Matrix Cyber Green (#00FF9D)
@@ -21,8 +20,8 @@ export const ANSI_YELLOW = C_YELLOW;
 export const ANSI_RESET = RESET;
 export const ANSI_BOLD = BOLD;
 
-// Frame 1: Solid Block Art Cat Portrait - Smoke Rising
-const FRAME_1 = `
+// Complete Solid Block Art Cat Portrait
+export const STATIC_BANNER = `
 ${C_GREEN}${BOLD} █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█${RESET}
 ${C_GREEN}${BOLD} █ ${C_PINK}${BOLD} S C R I P T   K I T T Y   E N T E R P R I S E   E N G I N E ${C_GREEN}${BOLD} █${RESET}
 ${C_GREEN}${BOLD} █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█${RESET}
@@ -45,72 +44,12 @@ ${C_GREEN}        ▄█    █   ▄████▄   █    █▄        ${C_
 ${C_GREEN}       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀      ${RESET}
 `;
 
-// Frame 2: Cat Wink & Pipe Sparkle
-const FRAME_2 = `
-${C_GREEN}${BOLD} █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█${RESET}
-${C_GREEN}${BOLD} █ ${C_PINK}${BOLD} S C R I P T   K I T T Y   E N T E R P R I S E   E N G I N E ${C_GREEN}${BOLD} █${RESET}
-${C_GREEN}${BOLD} █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█${RESET}
-
-${C_PURPLE}             ▄▄████████████▄▄             ${C_PINK}${BOLD}[SK ENGINE v1.0]${RESET}
-${C_PURPLE}           ▄██████████████████▄           ${C_CYAN}SYSTEM: //SCRIPT_KITTY_SEC_AUDIT.SH${RESET}
-${C_PURPLE}          ██████████████████████          ${C_GREEN}STATUS: DETECTIVE WINK active${RESET}
-${C_PINK}${BOLD}      ▄▄▄▄█████████[ S K ]████████▄▄▄▄    ${RESET}
-${C_GREEN} ◢█▄  ${C_PURPLE}▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀${C_GREEN}  ▄█◣ ${C_YELLOW}[INFO] Zero-Trust Policy Core: OK${RESET}
-${C_GREEN} █ ▀█▄  ▄█▀▀████████████████▀▀█▄  ▄█▀ █ ${C_GREEN}[INFO] SHA-256 Merkle Chain: VERIFIED${RESET}
-${C_GREEN} ▀▀▀▀▀▀▀▀                    ▀▀▀▀▀▀▀▀ 
-${C_GREEN}           █   ▄▄▄▄▄      ▄▄▄▄▄   █       ${C_CYAN}>> SECURITY MODULES ACTIVE <<${RESET}
-${C_GREEN}           █  █${C_WHITE}▀▀▀▀▀${C_GREEN}█    █${C_WHITE}█████${C_GREEN}█  █       ${C_GREEN}[+] SAST Code Vulnerability Scanner${RESET}
-${C_GREEN}           █  █${C_YELLOW}───${C_GREEN}──█    █${C_CYAN}▀███▀${C_GREEN}█  █ ${C_PINK}░▒°${RESET}   ${C_GREEN}[+] Secret & Credential Leak Engine${RESET}
-${C_GREEN}   ▄▄▄▄▄▄▄▄▀▄  ▀▀▀▀▀  ▄  ▀▀▀▀▀  ▄▀▄▄▄▄▄▄▄ ${C_PINK}▒°${RESET}[+] AI Guardrail Prompt Validator${RESET}
-${C_GREEN}           ▀▄▄▄    ▄███▄    ▄▄▄▀ ${C_PURPLE}╰─📜${C_RED}✨${RESET} ${C_GREEN}[+] Patch Cat Automated Fix Exporter${RESET}
-${C_GREEN}          ▄█▀▀██████████████▀▀█▄          ${C_YELLOW}-----------------------------------${RESET}
-${C_GREEN}         ▄█   █ ▀▀▀▀██▀▀▀▀ █   █▄         ${C_PINK}${BOLD}"Your Patch Cat — Found a Flaw!✨"${RESET}
-${C_GREEN}        ▄█    █   ▄████▄   █    █▄        ${C_YELLOW}-----------------------------------${RESET}
-${C_GREEN}       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀      ${RESET}
-`;
-
-// Frame 3: Laser Eye Lock
-const FRAME_3 = `
-${C_GREEN}${BOLD} █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█${RESET}
-${C_GREEN}${BOLD} █ ${C_PINK}${BOLD} S C R I P T   K I T T Y   E N T E R P R I S E   E N G I N E ${C_GREEN}${BOLD} █${RESET}
-${C_GREEN}${BOLD} █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█${RESET}
-
-${C_PURPLE}             ▄▄████████████▄▄             ${C_PINK}${BOLD}[SK ENGINE v1.0]${RESET}
-${C_PURPLE}           ▄██████████████████▄           ${C_CYAN}SYSTEM: //SCRIPT_KITTY_SEC_AUDIT.SH${RESET}
-${C_PURPLE}          ██████████████████████          ${C_GREEN}STATUS: LASER AUDIT COMPLETE${RESET}
-${C_PINK}${BOLD}      ▄▄▄▄█████████[ S K ]████████▄▄▄▄    ${RESET}
-${C_GREEN} ◢█▄  ${C_PURPLE}▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀${C_GREEN}  ▄█◣ ${C_YELLOW}[INFO] Zero-Trust Policy Core: OK${RESET}
-${C_GREEN} █ ▀█▄  ▄█▀▀████████████████▀▀█▄  ▄█▀ █ ${C_GREEN}[INFO] SHA-256 Merkle Chain: VERIFIED${RESET}
-${C_GREEN} ▀▀▀▀▀▀▀▀                    ▀▀▀▀▀▀▀▀ 
-${C_GREEN}           █   ▄▄▄▄▄      ▄▄▄▄▄   █       ${C_CYAN}>> SECURITY MODULES ACTIVE <<${RESET}
-${C_GREEN}           █  █${C_PINK}█████${C_GREEN}█    █${C_PINK}█████${C_GREEN}█  █       ${C_GREEN}[+] SAST Code Vulnerability Scanner${RESET}
-${C_GREEN}           █  █${C_PINK}█████${C_GREEN}█    █${C_PINK}█████${C_GREEN}█  █ ${C_PINK}░▒°${RESET}   ${C_GREEN}[+] Secret & Credential Leak Engine${RESET}
-${C_GREEN}   ▄▄▄▄▄▄▄▄▀▄  ▀▀▀▀▀  ▄  ▀▀▀▀▀  ▄▀▄▄▄▄▄▄▄ ${C_PINK}▒°${RESET}[+] AI Guardrail Prompt Validator${RESET}
-${C_GREEN}           ▀▄▄▄    ▄███▄    ▄▄▄▀ ${C_PURPLE}╰─📜${C_RED}🔥${RESET} ${C_GREEN}[+] Patch Cat Automated Fix Exporter${RESET}
-${C_GREEN}          ▄█▀▀██████████████▀▀█▄          ${C_YELLOW}-----------------------------------${RESET}
-${C_GREEN}         ▄█   █ ▀▀▀▀██▀▀▀▀ █   █▄         ${C_PINK}${BOLD}"Your Patch Cat — Lock & Remediate"${RESET}
-${C_GREEN}        ▄█    █   ▄████▄   █    █▄        ${C_YELLOW}-----------------------------------${RESET}
-${C_GREEN}       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀      ${RESET}
-`;
-
-export const FRAMES = [FRAME_1, FRAME_2, FRAME_3];
-
-export function printBanner() {
-  console.log(FRAME_1);
+export function printBanner(): void {
+  // Always print the complete banner once without duplicate scrollback
+  process.stdout.write(STATIC_BANNER + "\n");
 }
 
-export async function animateBanner(loops = 2, delayMs = 180): Promise<void> {
-  const isTTY = process.stdout.isTTY;
-  if (!isTTY) {
-    printBanner();
-    return;
-  }
-
-  for (let l = 0; l < loops; l++) {
-    for (const frame of FRAMES) {
-      console.clear();
-      process.stdout.write(frame + "\n");
-      await new Promise((res) => setTimeout(res, delayMs));
-    }
-  }
+export async function animateBanner(): Promise<void> {
+  // Safe default: print the static banner cleanly once to avoid terminal scrollback issues
+  printBanner();
 }
