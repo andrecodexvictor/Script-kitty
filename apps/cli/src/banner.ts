@@ -1,7 +1,7 @@
 /**
- * Script Kitty Enterprise - Ultra-Detailed Cyber Cat Detective Banner
- * Recreates the exact cat portrait from the user reference: pointed ears, fedora hat with SK logo,
- * cyber glasses, cat whiskers, cat snout/nose, pipe with smoke, trench coat & tie.
+ * Script Kitty Enterprise - Solid Unicode Block Art Cat Portrait Banner
+ * Combines high-density Unicode Block Art (█, ▀, ▄, ▌, ▐) with full cat anatomy:
+ * Pointed ears, Fedora with SK logo, Cyber glasses & eyes, Cat nose, Whiskers, Smoking Pipe, Coat & Tie.
  */
 
 export const C_GREEN  = "\x1b[38;2;0;255;157m";    // Matrix Cyber Green (#00FF9D)
@@ -21,54 +21,52 @@ export const ANSI_YELLOW = C_YELLOW;
 export const ANSI_RESET = RESET;
 export const ANSI_BOLD = BOLD;
 
-// Frame 1: Standard Pipe Puff & Whiskers
+// Frame 1: Solid Block Art Cat Portrait - Smoke Rising
 const FRAME_1 = `
 ${C_GREEN}${BOLD} █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█${RESET}
 ${C_GREEN}${BOLD} █ ${C_PINK}${BOLD} S C R I P T   K I T T Y   E N T E R P R I S E   E N G I N E ${C_GREEN}${BOLD} █${RESET}
 ${C_GREEN}${BOLD} █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█${RESET}
 
-${C_GREEN}             _/\/\/\/\/\/\_               ${C_PINK}${BOLD}[SK ENGINE v1.0]${RESET}
-${C_GREEN}           /   .#@%: .#@%  \\             ${C_CYAN}SYSTEM: //SCRIPT_KITTY_SEC_AUDIT.SH${RESET}
-${C_GREEN}         /===================\\           ${C_PURPLE}STATUS: ACTIVE ENTERPRISE AUDIT${RESET}
-${C_GREEN}         |  ${C_PINK}${BOLD}#%: +--  SK  --+${C_GREEN}  |           
-${C_GREEN}    /\  /=====================\  /\      ${C_YELLOW}[INFO] Zero-Trust Policy Core: OK${RESET}
-${C_GREEN}   /  \\(   ${C_PINK}${BOLD}#@%           #@   ${C_GREEN})/  \\     ${C_GREEN}[INFO] SHA-256 Merkle Chain: VERIFIED${RESET}
-${C_GREEN}  /____\\_______________________/____\\
-${C_GREEN}     /     ${C_CYAN}_____________     ${C_GREEN}\\           ${C_CYAN}>> SECURITY MODULES ACTIVE <<${RESET}
-${C_GREEN}    /     ${C_CYAN}/  ${C_GREEN}👁️${C_CYAN}   \\_/   ${C_GREEN}👁️${C_CYAN}  \\     ${C_GREEN}\\          ${C_GREEN}[+] SAST Code Vulnerability Scanner${RESET}
-${C_GREEN}   |     ${C_CYAN}(   ${C_GREEN}|░|${C_CYAN}   _   ${C_GREEN}|░|${C_CYAN}   )     ${C_GREEN}|  ${C_PINK}░▒°${RESET}    ${C_GREEN}[+] Secret & Credential Leak Engine${RESET}
-${C_GREEN} ==---====${C_CYAN}\\______/ \\______/====---== ${C_PINK}▒°${RESET}    ${C_GREEN}[+] AI Guardrail Prompt Validator${RESET}
-${C_GREEN}  \      ===\\___  ▲  ___/===      / ${C_PURPLE}╰─📜${C_RED}🔥${RESET} ${C_GREEN}[+] Patch Cat Automated Fix Exporter${RESET}
-${C_GREEN} / \ \   / /  |  \\_/  |  \ \   / / \     ${C_YELLOW}-----------------------------------${RESET}
-${C_GREEN}/   --\\ ( (  /\\  |  /\\  ) ) /--   \\    ${C_PINK}${BOLD}"Your Patch Cat — Bug Hunter" ${RESET}
-${C_GREEN}|   /  |  \\_\\__|  |  |__/  /  |  \\  |   ${C_YELLOW}-----------------------------------${RESET}
-${C_GREEN}|  |   |    |--|--|--|--|     |   | |
-${RESET}
+${C_PURPLE}             ▄▄████████████▄▄             ${C_PINK}${BOLD}[SK ENGINE v1.0]${RESET}
+${C_PURPLE}           ▄██████████████████▄           ${C_CYAN}SYSTEM: //SCRIPT_KITTY_SEC_AUDIT.SH${RESET}
+${C_PURPLE}          ██████████████████████          ${C_GREEN}STATUS: ACTIVE ENTERPRISE AUDIT${RESET}
+${C_PINK}${BOLD}      ▄▄▄▄█████████[ S K ]████████▄▄▄▄    ${RESET}
+${C_GREEN} ◢█▄  ${C_PURPLE}▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀${C_GREEN}  ▄█◣ ${C_YELLOW}[INFO] Zero-Trust Policy Core: OK${RESET}
+${C_GREEN} █ ▀█▄  ▄█▀▀████████████████▀▀█▄  ▄█▀ █ ${C_GREEN}[INFO] SHA-256 Merkle Chain: VERIFIED${RESET}
+${C_GREEN} ▀▀▀▀▀▀▀▀                    ▀▀▀▀▀▀▀▀ 
+${C_GREEN}           █   ▄▄▄▄▄      ▄▄▄▄▄   █       ${C_CYAN}>> SECURITY MODULES ACTIVE <<${RESET}
+${C_GREEN}           █  █${C_WHITE}█████${C_GREEN}█    █${C_WHITE}█████${C_GREEN}█  █       ${C_GREEN}[+] SAST Code Vulnerability Scanner${RESET}
+${C_GREEN}           █  █${C_CYAN}▀███▀${C_GREEN}█    █${C_CYAN}▀███▀${C_GREEN}█  █ ${C_PINK}░▒°${RESET}   ${C_GREEN}[+] Secret & Credential Leak Engine${RESET}
+${C_GREEN}   ▄▄▄▄▄▄▄▄▀▄  ▀▀▀▀▀  ▄  ▀▀▀▀▀  ▄▀▄▄▄▄▄▄▄ ${C_PINK}▒°${RESET}[+] AI Guardrail Prompt Validator${RESET}
+${C_GREEN}           ▀▄▄▄    ▄███▄    ▄▄▄▀ ${C_PURPLE}╰─📜${C_RED}🔥${RESET} ${C_GREEN}[+] Patch Cat Automated Fix Exporter${RESET}
+${C_GREEN}          ▄█▀▀██████████████▀▀█▄          ${C_YELLOW}-----------------------------------${RESET}
+${C_GREEN}         ▄█   █ ▀▀▀▀██▀▀▀▀ █   █▄         ${C_PINK}${BOLD}"Your Patch Cat — Bug Hunter"${RESET}
+${C_GREEN}        ▄█    █   ▄████▄   █    █▄        ${C_YELLOW}-----------------------------------${RESET}
+${C_GREEN}       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀      ${RESET}
 `;
 
-// Frame 2: Cat Wink & Pipe Smoke Drift
+// Frame 2: Cat Wink & Pipe Sparkle
 const FRAME_2 = `
 ${C_GREEN}${BOLD} █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█${RESET}
 ${C_GREEN}${BOLD} █ ${C_PINK}${BOLD} S C R I P T   K I T T Y   E N T E R P R I S E   E N G I N E ${C_GREEN}${BOLD} █${RESET}
 ${C_GREEN}${BOLD} █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█${RESET}
 
-${C_GREEN}             _/\/\/\/\/\/\_               ${C_PINK}${BOLD}[SK ENGINE v1.0]${RESET}
-${C_GREEN}           /   .#@%: .#@%  \\             ${C_CYAN}SYSTEM: //SCRIPT_KITTY_SEC_AUDIT.SH${RESET}
-${C_GREEN}         /===================\\           ${C_PURPLE}STATUS: ACTIVE ENTERPRISE AUDIT${RESET}
-${C_GREEN}         |  ${C_PINK}${BOLD}#%: +--  SK  --+${C_GREEN}  |           
-${C_GREEN}    /\  /=====================\  /\      ${C_YELLOW}[INFO] Zero-Trust Policy Core: OK${RESET}
-${C_GREEN}   /  \\(   ${C_PINK}${BOLD}#@%           #@   ${C_GREEN})/  \\     ${C_GREEN}[INFO] SHA-256 Merkle Chain: VERIFIED${RESET}
-${C_GREEN}  /____\\_______________________/____\\
-${C_GREEN}     /     ${C_CYAN}_____________     ${C_GREEN}\\           ${C_CYAN}>> SECURITY MODULES ACTIVE <<${RESET}
-${C_GREEN}    /     ${C_CYAN}/  ${C_YELLOW}───${C_CYAN}   \\_/   ${C_GREEN}👁️${C_CYAN}  \\     ${C_GREEN}\\          ${C_GREEN}[+] SAST Code Vulnerability Scanner${RESET}
-${C_GREEN}   |     ${C_CYAN}(   ${C_YELLOW}─⋏─${C_CYAN}   _   ${C_GREEN}|░|${C_CYAN}   )     ${C_GREEN}| ${C_PINK}░▒°${RESET}     ${C_GREEN}[+] Secret & Credential Leak Engine${RESET}
-${C_GREEN} ==---====${C_CYAN}\\______/ \\______/====---== ${C_PINK}▒°${RESET}    ${C_GREEN}[+] AI Guardrail Prompt Validator${RESET}
-${C_GREEN}  \      ===\\___  ▲  ___/===      / ${C_PURPLE}╰─📜${C_RED}✨${RESET} ${C_GREEN}[+] Patch Cat Automated Fix Exporter${RESET}
-${C_GREEN} / \ \   / /  |  \\_/  |  \ \   / / \     ${C_YELLOW}-----------------------------------${RESET}
-${C_GREEN}/   --\\ ( (  /\\  |  /\\  ) ) /--   \\    ${C_PINK}${BOLD}"Your Patch Cat — Found a Flaw!✨"${RESET}
-${C_GREEN}|   /  |  \\_\\__|  |  |__/  /  |  \\  |   ${C_YELLOW}-----------------------------------${RESET}
-${C_GREEN}|  |   |    |--|--|--|--|     |   | |
-${RESET}
+${C_PURPLE}             ▄▄████████████▄▄             ${C_PINK}${BOLD}[SK ENGINE v1.0]${RESET}
+${C_PURPLE}           ▄██████████████████▄           ${C_CYAN}SYSTEM: //SCRIPT_KITTY_SEC_AUDIT.SH${RESET}
+${C_PURPLE}          ██████████████████████          ${C_GREEN}STATUS: DETECTIVE WINK active${RESET}
+${C_PINK}${BOLD}      ▄▄▄▄█████████[ S K ]████████▄▄▄▄    ${RESET}
+${C_GREEN} ◢█▄  ${C_PURPLE}▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀${C_GREEN}  ▄█◣ ${C_YELLOW}[INFO] Zero-Trust Policy Core: OK${RESET}
+${C_GREEN} █ ▀█▄  ▄█▀▀████████████████▀▀█▄  ▄█▀ █ ${C_GREEN}[INFO] SHA-256 Merkle Chain: VERIFIED${RESET}
+${C_GREEN} ▀▀▀▀▀▀▀▀                    ▀▀▀▀▀▀▀▀ 
+${C_GREEN}           █   ▄▄▄▄▄      ▄▄▄▄▄   █       ${C_CYAN}>> SECURITY MODULES ACTIVE <<${RESET}
+${C_GREEN}           █  █${C_WHITE}▀▀▀▀▀${C_GREEN}█    █${C_WHITE}█████${C_GREEN}█  █       ${C_GREEN}[+] SAST Code Vulnerability Scanner${RESET}
+${C_GREEN}           █  █${C_YELLOW}───${C_GREEN}──█    █${C_CYAN}▀███▀${C_GREEN}█  █ ${C_PINK}░▒°${RESET}   ${C_GREEN}[+] Secret & Credential Leak Engine${RESET}
+${C_GREEN}   ▄▄▄▄▄▄▄▄▀▄  ▀▀▀▀▀  ▄  ▀▀▀▀▀  ▄▀▄▄▄▄▄▄▄ ${C_PINK}▒°${RESET}[+] AI Guardrail Prompt Validator${RESET}
+${C_GREEN}           ▀▄▄▄    ▄███▄    ▄▄▄▀ ${C_PURPLE}╰─📜${C_RED}✨${RESET} ${C_GREEN}[+] Patch Cat Automated Fix Exporter${RESET}
+${C_GREEN}          ▄█▀▀██████████████▀▀█▄          ${C_YELLOW}-----------------------------------${RESET}
+${C_GREEN}         ▄█   █ ▀▀▀▀██▀▀▀▀ █   █▄         ${C_PINK}${BOLD}"Your Patch Cat — Found a Flaw!✨"${RESET}
+${C_GREEN}        ▄█    █   ▄████▄   █    █▄        ${C_YELLOW}-----------------------------------${RESET}
+${C_GREEN}       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀      ${RESET}
 `;
 
 // Frame 3: Laser Eye Lock
@@ -77,23 +75,22 @@ ${C_GREEN}${BOLD} █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀�
 ${C_GREEN}${BOLD} █ ${C_PINK}${BOLD} S C R I P T   K I T T Y   E N T E R P R I S E   E N G I N E ${C_GREEN}${BOLD} █${RESET}
 ${C_GREEN}${BOLD} █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█${RESET}
 
-${C_GREEN}             _/\/\/\/\/\/\_               ${C_PINK}${BOLD}[SK ENGINE v1.0]${RESET}
-${C_GREEN}           /   .#@%: .#@%  \\             ${C_CYAN}SYSTEM: //SCRIPT_KITTY_SEC_AUDIT.SH${RESET}
-${C_GREEN}         /===================\\           ${C_PURPLE}STATUS: ACTIVE ENTERPRISE AUDIT${RESET}
-${C_GREEN}         |  ${C_PINK}${BOLD}#%: +--  SK  --+${C_GREEN}  |           
-${C_GREEN}    /\  /=====================\  /\      ${C_YELLOW}[INFO] Zero-Trust Policy Core: OK${RESET}
-${C_GREEN}   /  \\(   ${C_PINK}${BOLD}#@%           #@   ${C_GREEN})/  \\     ${C_GREEN}[INFO] SHA-256 Merkle Chain: VERIFIED${RESET}
-${C_GREEN}  /____\\_______________________/____\\
-${C_GREEN}     /     ${C_CYAN}_____________     ${C_GREEN}\\           ${C_CYAN}>> SECURITY MODULES ACTIVE <<${RESET}
-${C_GREEN}    /     ${C_CYAN}/  ${C_PINK}👁️${C_CYAN}   \\_/   ${C_PINK}👁️${C_CYAN}  \\     ${C_GREEN}\\          ${C_GREEN}[+] SAST Code Vulnerability Scanner${RESET}
-${C_GREEN}   |     ${C_CYAN}(   ${C_PINK}|░|${C_CYAN}   _   ${C_PINK}|░|${C_CYAN}   )     ${C_GREEN}|  ${C_PINK}░▒°${RESET}    ${C_GREEN}[+] Secret & Credential Leak Engine${RESET}
-${C_GREEN} ==---====${C_CYAN}\\______/ \\______/====---== ${C_PINK}▒°${RESET}    ${C_GREEN}[+] AI Guardrail Prompt Validator${RESET}
-${C_GREEN}  \      ===\\___  ▲  ___/===      / ${C_PURPLE}╰─📜${C_RED}🔥${RESET} ${C_GREEN}[+] Patch Cat Automated Fix Exporter${RESET}
-${C_GREEN} / \ \   / /  |  \\_/  |  \ \   / / \     ${C_YELLOW}-----------------------------------${RESET}
-${C_GREEN}/   --\\ ( (  /\\  |  /\\  ) ) /--   \\    ${C_PINK}${BOLD}"Your Patch Cat — Lock & Remediate"${RESET}
-${C_GREEN}|   /  |  \\_\\__|  |  |__/  /  |  \\  |   ${C_YELLOW}-----------------------------------${RESET}
-${C_GREEN}|  |   |    |--|--|--|--|     |   | |
-${RESET}
+${C_PURPLE}             ▄▄████████████▄▄             ${C_PINK}${BOLD}[SK ENGINE v1.0]${RESET}
+${C_PURPLE}           ▄██████████████████▄           ${C_CYAN}SYSTEM: //SCRIPT_KITTY_SEC_AUDIT.SH${RESET}
+${C_PURPLE}          ██████████████████████          ${C_GREEN}STATUS: LASER AUDIT COMPLETE${RESET}
+${C_PINK}${BOLD}      ▄▄▄▄█████████[ S K ]████████▄▄▄▄    ${RESET}
+${C_GREEN} ◢█▄  ${C_PURPLE}▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀${C_GREEN}  ▄█◣ ${C_YELLOW}[INFO] Zero-Trust Policy Core: OK${RESET}
+${C_GREEN} █ ▀█▄  ▄█▀▀████████████████▀▀█▄  ▄█▀ █ ${C_GREEN}[INFO] SHA-256 Merkle Chain: VERIFIED${RESET}
+${C_GREEN} ▀▀▀▀▀▀▀▀                    ▀▀▀▀▀▀▀▀ 
+${C_GREEN}           █   ▄▄▄▄▄      ▄▄▄▄▄   █       ${C_CYAN}>> SECURITY MODULES ACTIVE <<${RESET}
+${C_GREEN}           █  █${C_PINK}█████${C_GREEN}█    █${C_PINK}█████${C_GREEN}█  █       ${C_GREEN}[+] SAST Code Vulnerability Scanner${RESET}
+${C_GREEN}           █  █${C_PINK}█████${C_GREEN}█    █${C_PINK}█████${C_GREEN}█  █ ${C_PINK}░▒°${RESET}   ${C_GREEN}[+] Secret & Credential Leak Engine${RESET}
+${C_GREEN}   ▄▄▄▄▄▄▄▄▀▄  ▀▀▀▀▀  ▄  ▀▀▀▀▀  ▄▀▄▄▄▄▄▄▄ ${C_PINK}▒°${RESET}[+] AI Guardrail Prompt Validator${RESET}
+${C_GREEN}           ▀▄▄▄    ▄███▄    ▄▄▄▀ ${C_PURPLE}╰─📜${C_RED}🔥${RESET} ${C_GREEN}[+] Patch Cat Automated Fix Exporter${RESET}
+${C_GREEN}          ▄█▀▀██████████████▀▀█▄          ${C_YELLOW}-----------------------------------${RESET}
+${C_GREEN}         ▄█   █ ▀▀▀▀██▀▀▀▀ █   █▄         ${C_PINK}${BOLD}"Your Patch Cat — Lock & Remediate"${RESET}
+${C_GREEN}        ▄█    █   ▄████▄   █    █▄        ${C_YELLOW}-----------------------------------${RESET}
+${C_GREEN}       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀      ${RESET}
 `;
 
 export const FRAMES = [FRAME_1, FRAME_2, FRAME_3];
