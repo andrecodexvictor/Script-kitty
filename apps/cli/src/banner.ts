@@ -1,16 +1,17 @@
 /**
- * Script Kitty Enterprise - Cyber Detective ANSI Art Banner
- * Features a detailed 24-bit TrueColor ANSI Detective Cat with Fedora Hat, Glasses, Pipe, & Trench Coat.
+ * Script Kitty Enterprise - High-Density Unicode Block Art Detective Banner
+ * Uses Unicode Block Characters (█, ▀, ▄, ▌, ▐, ░) and 24-bit TrueColor ANSI escape codes
+ * to render a solid, pixel-perfect Cyber Detective Cat in standard terminals.
  */
 
 // TrueColor (RGB) ANSI Escape Codes
-export const C_GREEN  = "\x1b[38;2;0;255;157m";    // Matrix Cyber Green
-export const C_PINK   = "\x1b[38;2;255;0;255m";    // Neon Magenta/Pink
-export const C_PURPLE = "\x1b[38;2;181;95;230m";   // Cyber Purple
-export const C_CYAN   = "\x1b[38;2;0;229;255m";    // Neon Cyan
-export const C_YELLOW = "\x1b[38;2;255;215;0m";    // Gold Yellow
-export const C_RED    = "\x1b[38;2;255;70;70m";    // Alert Red
-export const C_DIM    = "\x1b[38;2;100;116;139m";  // Muted Gray
+export const C_GREEN  = "\x1b[38;2;0;255;157m";    // Matrix Cyber Green (#00FF9D)
+export const C_PINK   = "\x1b[38;2;255;0;255m";    // Hot Magenta (#FF00FF)
+export const C_PURPLE = "\x1b[38;2;181;95;230m";   // Cyber Purple (#B55FE6)
+export const C_CYAN   = "\x1b[38;2;0;229;255m";    // Neon Cyan (#00E5FF)
+export const C_YELLOW = "\x1b[38;2;255;215;0m";    // Gold Yellow (#FFD700)
+export const C_WHITE  = "\x1b[38;2;255;255;255m";  // Pure White (#FFFFFF)
+export const C_DARK   = "\x1b[38;2;30;41;59m";     // Dark Slate (#1E293B)
 export const BOLD     = "\x1b[1m";
 export const RESET    = "\x1b[0m";
 
@@ -22,31 +23,29 @@ export const ANSI_YELLOW = C_YELLOW;
 export const ANSI_RESET = RESET;
 export const ANSI_BOLD = BOLD;
 
-export const CYBER_DETECTIVE_CAT = `
-${C_GREEN}${BOLD}  SCRIPT KITTY ENTERPRISE ${RESET}
-${C_PINK}${BOLD}     SECURITY AUDIT ENGINE ${RESET}
+export const BLOCK_ART_DETECTIVE_CAT = `
+${C_GREEN}${BOLD} █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█${RESET}
+${C_GREEN}${BOLD} █ ${C_PINK}${BOLD} S C R I P T   K I T T Y   E N T E R P R I S E   E N G I N E ${C_GREEN}${BOLD} █${RESET}
+${C_GREEN}${BOLD} █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█${RESET}
 
-${C_GREEN}         _/\/\/\/\/\_          ${C_PINK}${BOLD}[SK]${RESET}
-${C_GREEN}       /  #@%: .#@%  \\         ${C_CYAN}SYSTEM: //SCRIPT_KITTY_SEC_AUDIT.SH${RESET}
-${C_GREEN}     /=================\\       ${C_PURPLE}>>> STATUS: ACTIVE ENTERPRISE AUDIT${RESET}
-${C_GREEN}     | ${C_PINK}${BOLD}#%: +--  SK  --+${C_GREEN} |
-${C_GREEN}    /===================\\      ${C_YELLOW}[INFO] Zero-Trust Policy Engine: OK${RESET}
-${C_GREEN}   (   ${C_PINK}${BOLD}#@%           #@${C_GREEN}   )     ${C_GREEN}[INFO] SHA-256 Hash Chain: VERIFIED${RESET}
-${C_GREEN}  /_______________________\\
-${C_GREEN}     /   ${C_CYAN}_____________   ${C_GREEN}\\     ${C_CYAN}>> SECURITY MODULAR AUDIT <<${RESET}
-${C_GREEN}    /   ${C_CYAN}/  ${C_GREEN}O${C_CYAN}  \\_/  ${C_GREEN}O${C_CYAN}  \\  ${C_GREEN}\\    ${C_GREEN}[+] SAST Code Vulnerability Scanner${RESET}
-${C_GREEN}   |   ${C_CYAN}(  ${C_GREEN}(#)${C_CYAN}  _  ${C_GREEN}(#)${C_CYAN}  )  ${C_GREEN}|   ${C_GREEN}[+] Credential & Secret Leak Engine${RESET}
-${C_GREEN}  ==--- ${C_CYAN}\\_____/ \\_____/  ${C_GREEN}---==  ${C_GREEN}[+] AI Guardrail & Prompt-Injection Validator${RESET}
-${C_GREEN}   \\      \\___-O-___/     /    ${C_GREEN}[+] Patch Cat Automated Remediation Exporter${RESET}
-${C_GREEN}  / \\ \\   / /  |  \\ \\   / / \\
-${C_GREEN} /   --\\ ( ( \\ | / ) ) /--   \\ ${C_YELLOW}------------------------------------------------${RESET}
-${C_GREEN}|   /  |  \\_\\__|__/  /  |  \\  |${C_PINK}${BOLD}  "Your Patch Cat — Hunting Bugs, Patching Flaws"${RESET}
-${C_GREEN}|  |   |    |--|--|     |   | |${C_YELLOW}------------------------------------------------${RESET}
-${C_GREEN}|  |  / \\   |  |  |    / \\  | |
-${C_GREEN}\\__\\_/__/   \\__/\\__/   \\__\\_/__/
+${C_PURPLE}            ▄▄████████████▄▄           ${C_PINK}${BOLD}[SK ENGINE v1.0]${RESET}
+${C_PURPLE}          ▄██████████████████▄         ${C_CYAN}SYSTEM: //SCRIPT_KITTY_SEC_AUDIT.SH${RESET}
+${C_PURPLE}         ██████████████████████        ${C_GREEN}STATUS: ACTIVE ENTERPRISE AUDIT${RESET}
+${C_PINK}${BOLD}     ▄▄▄▄█████████[ S K ]████████▄▄▄▄  ${RESET}
+${C_PURPLE}     ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  ${C_YELLOW}[INFO] Zero-Trust Policy Core: OK${RESET}
+${C_GREEN}          █   ▄▄▄▄▄     ▄▄▄▄▄   █      ${C_GREEN}[INFO] SHA-256 Merkle Chain: VERIFIED${RESET}
+${C_GREEN}          █  █${C_WHITE}█████${C_GREEN}█   █${C_WHITE}█████${C_GREEN}█  █     
+${C_GREEN}          █  █${C_CYAN}▀███▀${C_GREEN}█   █${C_CYAN}▀███▀${C_GREEN}█  █      ${C_CYAN}>> SECURITY MODULES ACTIVE <<${RESET}
+${C_GREEN}          ▀▄  ▀▀▀▀▀  ▄  ▀▀▀▀▀  ▄▀      ${C_GREEN}[+] SAST Code Vulnerability Scanner${RESET}
+${C_GREEN}           ▀▄▄▄    ▄███▄    ▄▄▄▀       ${C_GREEN}[+] Secret & Credential Leak Engine${RESET}
+${C_GREEN}          ▄█▀▀██████████████▀▀█▄       ${C_GREEN}[+] AI Guardrail Prompt Validator${RESET}
+${C_GREEN}         ▄█   █ ▀▀▀▀██▀▀▀▀ █   █▄      ${C_GREEN}[+] Patch Cat Automated Fix Exporter${RESET}
+${C_GREEN}        ▄█    █    ▄██▄    █    █▄     ${C_YELLOW}-----------------------------------${RESET}
+${C_GREEN}       ▄█     █   ▄████▄   █     █▄    ${C_PINK}${BOLD}"Your Patch Cat — Bug Hunter"${RESET}
+${C_GREEN}      ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  ${C_YELLOW}-----------------------------------${RESET}
 ${RESET}
 `;
 
 export function printBanner() {
-  console.log(CYBER_DETECTIVE_CAT);
+  console.log(BLOCK_ART_DETECTIVE_CAT);
 }
