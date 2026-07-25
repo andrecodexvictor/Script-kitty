@@ -33,3 +33,7 @@ npm-debug.log*
 # Standalone Vercel App Repository
 vercel-app/
 
+# Internal Lab & Experimental Modules (Excluded from Open-Source GitHub)
+internal_lab/
+packages/agent_runtime/script_kitty_agent/lab/
+scratch/
