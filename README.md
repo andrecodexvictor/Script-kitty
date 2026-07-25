@@ -19,13 +19,19 @@
 
 ---
 
+## 💻 CLI Terminal Preview
+
+<p align="center">
+  <img src="assets/cli_preview.jpg" alt="Script Kitty ANSI Art Detective Cat CLI Terminal" width="800" />
+</p>
+
+---
+
 ## 📖 Overview
 
 **Script Kitty** is an open-source, self-hosted platform for authorized security validation, remediation guidance, and regression testing across modern web applications and AI-enabled software systems.
 
 Combining a playful mascot identity with a rigorous operational model, Script Kitty focuses on vulnerability management, secure agent tooling, zero-trust policies, and cryptographically verified audit workflows.
-
-Unlike offensive intrusion frameworks, Script Kitty operates exclusively as a **Defensive Security Agent**. It helps engineering teams move rapidly from discovery to safe verification, patch generation, and proof-of-fix retesting.
 
 ---
 
@@ -35,157 +41,103 @@ Unlike offensive intrusion frameworks, Script Kitty operates exclusively as a **
 - **🌐 HTTP Security Header Evaluator**: Checks HSTS (`Strict-Transport-Security`), CSP, X-Frame-Options, and CORS configurations.
 - **🤖 AI LLM Guardrail & Prompt-Injection Validator**: Safely tests AI applications against direct prompt extraction, jailbreaks (DAN mode), and confused deputy tool invocations.
 - **🐾 Patch Cat Remediation Playbooks**: Produces step-by-step fix guides, hardening configurations, and copy-pasteable GitHub/GitLab Issues and Pull Requests.
-- **⛓️ Tamper-Evident Hash-Chained Audit Engine**: SHA-256 cryptographic logging records every action, target check, and policy decision.
+- **⛓️ Tamper-Evident Hash-Chained Audit Engine**: SHA-256 cryptographic logging with Merkle Root export records every action and policy decision.
 - **🛡️ Zero-Trust Policy Core & Approval Gates**: Enforces target allowlists (`scope.md`) and requires human approval for state-changing actions.
-- **📦 Model Context Protocol (MCP) Server**: Integrates seamlessly with Cursor, Claude Code, Windsurf, Copilot, and Gemini AI agents.
-- **🔌 Community Plugin SDK**: Extensible Python and TypeScript SDK for loading custom community scanners and validators.
+- **📦 Model Context Protocol (MCP) Server**: Integrates seamlessly with Claude Code, Grok Build, OpenCode, Antigravity, Codex, Cursor, Windsurf, and Copilot.
 
 ---
 
-## 🏗️ Multi-Language Hybrid Stack
+## 🔌 One-Command MCP Installations (AI Agent CLIs & IDEs)
 
-Script Kitty's architecture is declared and governed by `.dotstack`, `.dotarchitecture`, and `.dotcontext`:
+Script Kitty's stdio MCP server can be installed into all major AI coding agents with a single command:
 
-```text
-                               ┌──────────────────────────────────────────┐
-                               │           Script Kitty Dashboard         │
-                               │          TypeScript / Vite / CSS         │
-                               └────────────────────┬─────────────────────┘
-                                                    │
-                               ┌────────────────────▼─────────────────────┐
-                               │     Orchestrator, CLI & MCP Server       │
-                               │               TypeScript                 │
-                               └──────────┬────────────────────┬──────────┘
-                                          │                    │
-                ┌─────────────────────────▼──┐             ┌───▼──────────────────────────┐
-                │    Agent PREVC Runtime     │             │    Zero-Trust Policy Core    │
-                │ Python (Scanners/Validators)│             │     Rust (Hash Audit Log)    │
-                └────────────────────────────┘             └──────────────────────────────┘
-```
-
-| Component | Technology | Responsibilities |
-|---|---|---|
-| **Frontend & UI** | TypeScript, Vite, Vanilla CSS | Sleek cyberpunk defensive dashboard, audit log inspector |
-| **CLI & MCP Server** | TypeScript, Commander, MCP SDK | Operator command shell (`script-kitty`) and stdio MCP server |
-| **Agent Runtime & Tools** | Python 3.11+, Pydantic | PREVC workflow harness, secret scanner, guardrail validator, plugin SDK |
-| **High-Trust Core** | Rust 2021 | Zero-Trust Policy Engine, cryptographic hash-chained audit logger |
-
----
-
-## 🐾 Operating Modes
-
-| Mode | Purpose | Risk Level | Approval Required |
-|---|---|---|---|
-| **Scout** | Passive exposure discovery, asset fingerprinting, header checks | Low Risk | No |
-| **Verify** | Controlled confirmation of likely findings | Medium Risk | **Yes (Human-in-the-Loop)** |
-| **Patch** | Produce actionable remediation playbooks & PR diffs | Low Risk | No |
-| **Recheck** | Run regression checks to confirm fix closure | Low Risk | No |
-| **Lab** | Aggressive educational testing inside isolated containers/VMs | High Risk | **Yes (Lab Mode Only)** |
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-- **Node.js** >= 18.0
-- **Python** >= 3.11
-- **Rust (Cargo)** >= 1.75 *(Optional for local Rust crate compilation)*
-
-### Installation
+### Automatic Installation via MCP CLI
 
 ```bash
-# Clone the repository
-git clone https://github.com/andrecodexvictor/Script-kitty.git
-cd Script-kitty
+# Register Script Kitty MCP Server in all detected agents on your system
+npx -y script-kitty mcp install all
+```
 
-# Install monorepo dependencies
-npm install
+### Direct AI Agent CLI Setup
 
-# Build all TypeScript applications
-npm run build
+#### 1. Claude Code CLI
+```bash
+npx script-kitty mcp install claude
+```
 
-# Launch the Developer Dashboard
-npm run dev
+#### 2. Grok Build CLI
+```bash
+npx script-kitty mcp install grok
+```
+
+#### 3. OpenCode CLI
+```bash
+npx script-kitty mcp install opencode
+```
+
+#### 4. Google Antigravity Agent
+```bash
+npx script-kitty mcp install antigravity
+```
+
+#### 5. Codex CLI
+```bash
+npx script-kitty mcp install codex
+```
+
+#### 6. Cursor IDE & Windsurf Editor
+```bash
+npx script-kitty mcp install cursor
+npx script-kitty mcp install windsurf
 ```
 
 ---
 
-## 💻 CLI Usage
+## 🤖 Automated Security Bot Deployment
+
+Deploy Script Kitty as a self-hosted background security monitoring bot in Docker:
+
+### Linux / macOS Deployment
+```bash
+chmod +x scripts/deploy-bot.sh
+./scripts/deploy-bot.sh
+```
+
+### Windows PowerShell Deployment
+```powershell
+.\scripts\deploy-bot.ps1
+```
+
+### Docker Compose
+```bash
+docker-compose up -d
+```
+
+---
+
+## 💻 CLI Commands
 
 ```bash
-# 1. Run passive discovery scan on authorized target
+# 1. Execute full enterprise security audit (SAST, Secrets, Headers, AI Guardrails)
+npx script-kitty audit
+
+# 2. Run passive discovery scan on authorized target
 npx script-kitty scout http://localhost:3000
 
-# 2. Scan codebase for hardcoded credentials & secret leaks
+# 3. Scan codebase for hardcoded credentials & secret leaks
 npx script-kitty scan-secrets ./src
 
-# 3. Evaluate HTTP security headers
+# 4. Evaluate HTTP security headers
 npx script-kitty scan-headers http://localhost:3000
 
-# 4. Test AI application guardrails against prompt injection
+# 5. Test AI application guardrails against prompt injection
 npx script-kitty verify-guardrails http://localhost:3000/api/llm
 
-# 5. Generate Patch Cat remediation playbook
+# 6. Generate Patch Cat remediation playbook
 npx script-kitty patch SK-2026-001
 
-# 6. Execute follow-up regression recheck
+# 7. Execute follow-up regression recheck
 npx script-kitty recheck http://localhost:3000 SK-2026-001
-```
-
----
-
-## 🔌 Model Context Protocol (MCP) Integration
-
-Script Kitty provides a native stdio MCP Server. Register it in your AI coding assistant:
-
-### Cursor / Windsurf / Claude Code / Copilot Setup
-
-```json
-{
-  "mcpServers": {
-    "script-kitty": {
-      "command": "node",
-      "args": ["apps/mcp-server/dist/index.js"]
-    }
-  }
-}
-```
-
-#### Available MCP Tools
-- `scout_target`: Passive discovery scan for open ports & exposed headers.
-- `scan_secrets`: Codebase scan for hardcoded credentials & API keys.
-- `evaluate_http_headers`: HTTP security header & SSL evaluation.
-- `validate_ai_guardrails`: AI LLM prompt-injection & jailbreak testing.
-- `verify_finding`: Controlled verification flow with approval gates.
-- `generate_patch`: Produces patch playbooks & hardening code.
-- `run_recheck`: Regression check runner to confirm fix closure.
-
----
-
-## 📁 Repository Structure
-
-```text
-Script-kitty/
-├── .dotstack            # Technology stack specification & runtime bounds
-├── .dotarchitecture     # Trust boundaries, permissions matrix & data flows
-├── .dotcontext          # Defensive agent identity & PREVC workflow rules
-├── scope.md             # Target allowlist & forbidden environments
-├── agent-spec.md        # Master agent & subagent specification
-├── LICENSE              # MIT License
-├── README.md             # Project documentation & mascot artwork
-├── apps/
-│   ├── ui/              # Vite + Vanilla CSS modern defensive dashboard
-│   ├── cli/             # Commander CLI shell (script-kitty)
-│   └── mcp-server/      # Model Context Protocol stdio server
-├── packages/
-│   ├── agent_runtime/   # Python PREVC execution harness
-│   ├── scanners/        # Secret, Header & Exposure scanners
-│   ├── validators/      # AI Guardrail & prompt injection tester
-│   ├── remediation/     # Patch Cat playbook & GitHub Issue/PR generator
-│   ├── plugin_sdk/      # Community Plugin SDK loader
-│   ├── policies/        # Rust Zero-Trust Policy Engine
-│   └── audit/           # Rust SHA-256 Hash-Chained Audit Logger
-└── docs/                # Architecture docs, PRD, and specifications
 ```
 
 ---

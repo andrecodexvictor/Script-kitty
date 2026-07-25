@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  script-kitty-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: script-kitty-bot
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    mem_limit: 512m
+    cpus: 1.0
+    volumes:
+      - ./.context:/app/.context:rw
+      - ./scope.md:/app/scope.md:ro
+    environment:
+      - NODE_ENV=production
+      - SCRIPT_KITTY_MODE=Scout
