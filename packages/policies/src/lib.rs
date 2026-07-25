@@ -1,6 +1,8 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashSet;
 
+pub mod crypto;
+
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum OperatingMode {
     Scout,

@@ -3,7 +3,7 @@ name = "script-kitty-policies"
 version = "0.1.0"
 edition = "2021"
 authors = ["Script Kitty Team"]
-description = "Zero-trust policy engine for Script Kitty defensive security agent"
+description = "Zero-trust policy engine & cryptographic auditor for Script Kitty defensive security agent"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -12,6 +12,8 @@ crate-type = ["cdylib", "rlib"]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 regex = "1.10"
+sha2 = "0.10"
+base64 = "0.21"
 thiserror = "1.0"
 
 [dev-dependencies]
